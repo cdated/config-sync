@@ -11,6 +11,7 @@ import XMonad.Layout.Maximize
 import XMonad.Layout.Named
 import XMonad.Layout.ShowWName
 import XMonad.Layout.NoBorders
+import XMonad.Hooks.SetWMName
 import System.IO
 
 import qualified XMonad.StackSet as W
@@ -47,8 +48,9 @@ myManageHook = composeAll
 main = do
 xmproc <- spawnPipe "/usr/bin/xmobar ~/.env/.xmobarrc"
 xmonad $ defaultConfig
-    { manageHook         = myManageHook,
-      layoutHook         = smartBorders $ myLayout,
-      terminal           = "gnome-terminal",
-      focusedBorderColor = "red"
+    { manageHook         = myManageHook
+    , layoutHook         = smartBorders $ myLayout
+    , terminal           = "gnome-terminal"
+    , focusedBorderColor = "red"
+    , startupHook        = setWMName "LG3D"
     }
