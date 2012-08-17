@@ -22,7 +22,7 @@ set shiftwidth=4
 set expandtab
 
 " Highlight column 80 and above.
-match ErrorMsg '\%>80v.\+'
+"match ErrorMsg '\%>80v.\+'
 set showcmd
 
 " Show line numbers
@@ -77,3 +77,28 @@ endif
 
 " Change the color of comments for dark backgrounds
 " highlight Comment ctermfg=darkgreen
+
+" Use vim-pathogen, needed for syntastic
+call pathogen#infect()
+
+" Tag completion after a 'comma slash'
+imap ,/ </<C-X><C-O>
+
+set bs=2
+
+imap <tab> <c-x><c-o>
+
+function! CleverTab()
+  if pumvisible()
+    return "\<C-N>"
+  endif
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  elseif exists('&omnifunc') && &omnifunc != ''
+    return "\<C-X>\<C-O>"
+  else
+    return "\<C-N>"
+  endif
+endfunction
+
+inoremap <Tab> <C-R>=CleverTab()<CR>
