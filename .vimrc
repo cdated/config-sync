@@ -22,7 +22,7 @@ set shiftwidth=4
 set expandtab
 
 " Highlight column 80 and above.
-"match ErrorMsg '\%>80v.\+'
+" match ErrorMsg '\%>80v.\+'
 set showcmd
 
 " Show line numbers
@@ -59,8 +59,17 @@ map <C-l> <C-W>l<C-W>_
 inoremap <F2> <c-o>:w<cr>
 
 " Set folding options
-" set foldcolumn=1
-" hi foldcolumn ctermbg=8
+set foldcolumn=2
+set foldmethod=syntax
+" Limit folding
+set foldnestmax=2
+set foldminlines=2
+" Use spacebar to open folds
+nnoremap <space> za
+vnoremap <space> zf
+" Set fold colors
+hi foldcolumn ctermbg=8
+hi folded ctermbg=8
 
 " Show non-printed characters and tabs as arrows
 set list
@@ -78,15 +87,21 @@ endif
 " Change the color of comments for dark backgrounds
 " highlight Comment ctermfg=darkgreen
 
+" Set ctags to look for tags file in parent directory
+set tags=tags;
+
+" Disable swap files
+set noswapfile
+
 " Use vim-pathogen, needed for syntastic
 call pathogen#infect()
 
 " Tag completion after a 'comma slash'
 imap ,/ </<C-X><C-O>
 
-set bs=2
-
-imap <tab> <c-x><c-o>
+" Save fold states
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
 
 function! CleverTab()
   if pumvisible()
@@ -102,3 +117,10 @@ function! CleverTab()
 endfunction
 
 inoremap <Tab> <C-R>=CleverTab()<CR>
+
+""""""""""""""" Misc """"""""""""""""""
+" Shortcut to escape
+inoremap kj <Esc>
+
+" Ensure backspaces work properly
+set bs=2
