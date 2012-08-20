@@ -1,0 +1,24 @@
+Config { font = "-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , commands = [ Run Weather "KORF" ["-t","Norfolk : <tempF>F (<skyCondition>)","-L","45","-H","85","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 300
+                    , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 300
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 300
+                    , Run Memory ["-t","Mem: <usedratio>%"] 300
+                    , Run Swap [] 300
+                    , Run BatteryP ["BAT0"]
+                                   ["-t", "<acstatus><watts> (<left>%) / <timeleft>",
+                                    "-L", "10", "-H", "80", "-p", "3",
+                                    "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                                    "-L", "-15", "-H", "-5",
+                                    "-l", "red", "-m", "blue", "-h", "green"]
+                                    600
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %b %_d %Y %I:%M" "date" 300
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% * %swap% | %eth1% | %battery% }{ <fc=#3465A4>%date%</fc>| %KORF% | %uname%"
+       }
