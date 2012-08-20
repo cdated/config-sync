@@ -68,14 +68,18 @@ SAVEHIST=1000
 CABAL_PATH=/home/fieldsb/.cabal/bin
 export PATH=/home/fieldsb/dev/android/android-sdk-linux_x86/tools:$CABAL_PATH:$PATH
 
+# End of lines added by compinstall
 autoload -U colors && colors
-export PYTHONPATH=/usr/lib/python2.7/site-packages:/opt/google-appengine-python:$PYTHONPATH
-
-export PATH=/home/fieldsb/dev/android/android-sdk-linux_x86/tools:/home/fieldsb/dev/android/android-sdk-linux_x86/platform-tools:$PATH
-export CFLAGS="-Wall"
 
 # Aliases
-alias ls='ls --color'
+alias chrome=google-chrome
+alias grep='grep --color=auto'
+alias watcher='watch -d -n1 ls -aslth'
+alias ls='ls --color=auto'
+alias vi=vim
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias which-command=whence
+
 alias emacs="nohup emacs > /dev/null &"
 
 alias startx='ssh-agent startx'
@@ -87,3 +91,16 @@ alias indent="xmlindent -w"
 alias pause="mocp -P"
 alias play="mocp -U"
 alias next="mocp -f"
+
+# Exports
+export PYTHONPATH=/usr/lib/python2.7/site-packages:/opt/google-appengine-python:$PYTHONPATH
+export PATH=/home/fieldsb/dev/android/android-sdk-linux_x86/tools:/home/fieldsb/dev/android/android-sdk-linux_x86/platform-tools:$PATH
+export CFLAGS="-Wall"
+export SVN_EDITOR=vim
+export CCACHE_HOME=/home/fieldsb/.ccache
+
+# Make quick tarballs
+function bak(){
+        DATE=$(date +%Y_%m_%d_%H-%M)
+                tar -cjvf ${1%/}.$DATE.tar.bz ${1%/}
+}
