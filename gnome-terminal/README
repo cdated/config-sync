@@ -1,0 +1,1 @@
+To install gnome-terminal default from %gconf.xml file, copy file into ~/.gconf/apps/gnome-terminal
