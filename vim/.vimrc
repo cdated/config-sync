@@ -124,3 +124,6 @@ inoremap kj <Esc>
 
 " Ensure backspaces work properly
 set bs=2
+
+" Set vim to use 256 color
+set t_Co=256
