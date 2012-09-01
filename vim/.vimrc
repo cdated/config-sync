@@ -118,6 +118,20 @@ endfunction
 
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
+"""""""""""" Colorscheme """"""""""""""
+" Set vim to use 256 color
+set t_Co=256
+
+" Set default colorscheme
+colorscheme zenburn_mod
+let g:zenburn_high_Contrast=1
+
+" Explicitly use tell vim to use the same scheme in vimdiff
+if &diff
+        colorscheme zenburn_mod
+        let g:zenburn_high_Contrast=1
+endif
+
 """"""""""""""" Misc """"""""""""""""""
 " Shortcut to escape
 inoremap kj <Esc>
@@ -125,5 +139,5 @@ inoremap kj <Esc>
 " Ensure backspaces work properly
 set bs=2
 
-" Set vim to use 256 color
-set t_Co=256
+" Set vim to expect a paste operation
+set paste
