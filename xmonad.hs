@@ -11,7 +11,9 @@ import XMonad.Layout.Maximize
 import XMonad.Layout.Named
 import XMonad.Layout.ShowWName
 import XMonad.Layout.NoBorders
+import XMonad.Layout.TwoPane
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.EwmhDesktops
 import System.IO
 
 import qualified XMonad.StackSet as W
@@ -30,13 +32,23 @@ myTabTheme = defaultTheme { activeColor = "DarkSlateGray"
                           , decoWidth = 200
                           , decoHeight = 16 }
 
-myLayout = avoidStruts (tiled ||| Full ||| myFloat)
+myLayout = avoidStruts (tiled ||| Full ||| myFloat ||| twoPane ||| myWide)
     where
       tiled = named "Tiled" (maximize (Tall nmaster delta ratio))
       nmaster = 1
-      ratio = 114/175
+      ratio = 75/175
       delta = 1/175
       myFloat = named "Floating" (maximize (simpleFloat' shrinkText myTabTheme))
+      twoPane = TwoPane (1/100) (3/4)
+      myWide = Mirror $ Tall nmaster delta ratio
+        where
+            -- The default number of windows in the master pane
+            nmaster = 1
+            -- Percent of screen to increment by when resizing panes
+            delta   = 3/100
+            -- Default proportion of screen occupied by master pane
+            ratio   = 80/100
+
 
 myManageHook = composeAll
     [ className =? "Gimp"       --> doFloat
@@ -53,4 +65,5 @@ xmonad $ defaultConfig
     , terminal           = "gnome-terminal"
     , focusedBorderColor = "red"
     , startupHook        = setWMName "LG3D"
+    , handleEventHook    = fullscreenEventHook
     }
