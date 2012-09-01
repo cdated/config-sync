@@ -1,8 +1,15 @@
 " Vim color file
+"
+" Modifed: 9/1/12
+" This scheme is based off of zenburn and has been modified slightly too much to
+" still have the same name, but mostly resembles the original. -- cdated
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:   Jani Nurminen <slinky@iki.fi>
 " Last Change:  $Id: zenburn.vim,v 2.21 2011/04/26 12:13:41 slinky Exp slinky $
 " URL:          http://slinky.imukuppi.org/zenburnpage/
 " License:      GNU GPL <http://www.gnu.org/licenses/gpl.html>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Nothing too fancy, just some alien fruit salad to keep you in the zone.
 " This syntax file was designed to be used with dark environments and
@@ -261,10 +268,11 @@ if &t_Co > 255
     hi Debug           ctermfg=181   cterm=bold
     hi Define          ctermfg=223   cterm=bold
     hi Delimiter       ctermfg=245
-    hi DiffAdd         ctermfg=66    ctermbg=233     cterm=bold
-    hi DiffChange      ctermbg=236
-    hi DiffDelete      ctermfg=236   ctermbg=238
-    hi DiffText        ctermfg=217   ctermbg=233     cterm=bold
+    " Diff colors taken from evening colorscheme
+    hi DiffAdd         ctermbg=4     cterm=bold
+    hi DiffChange      ctermbg=5   cterm=bold
+    hi DiffDelete      ctermfg=12    ctermbg=6       cterm=bold
+    hi DiffText        ctermbg=1     cterm=bold      cterm=reverse  cterm=bold
     hi Directory       ctermfg=109   cterm=bold
     hi ErrorMsg        ctermfg=115   ctermbg=236     cterm=bold
     hi Exception       ctermfg=249   cterm=bold

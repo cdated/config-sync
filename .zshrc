@@ -98,6 +98,7 @@ export PATH=/home/fieldsb/dev/android/android-sdk-linux_x86/tools:/home/fieldsb/
 export CFLAGS="-Wall"
 export SVN_EDITOR=vim
 export CCACHE_HOME=/home/fieldsb/.ccache
+export TERM=screen-256color
 
 # Make quick tarballs
 function bak(){
