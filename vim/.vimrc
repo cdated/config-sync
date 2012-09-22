@@ -15,11 +15,11 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 " Handle indenting
-set tabstop=8
 set cindent
 set cino=(0,W$,c1,C1,{0
 set shiftwidth=4
 set expandtab
+set smarttab
 
 " Highlight column 80 and above.
 " match ErrorMsg '\%>80v.\+'
@@ -80,7 +80,7 @@ filetype plugin on
 " Python specific indenting
 if has("autocmd")
     autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-    autocmd BufRead *.py set tabstop=4
+    autocmd BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 endif
 
@@ -103,20 +103,6 @@ imap ,/ </<C-X><C-O>
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
-function! CleverTab()
-  if pumvisible()
-    return "\<C-N>"
-  endif
-  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-  elseif exists('&omnifunc') && &omnifunc != ''
-    return "\<C-X>\<C-O>"
-  else
-    return "\<C-N>"
-  endif
-endfunction
-
-inoremap <Tab> <C-R>=CleverTab()<CR>
 
 """""""""""" Colorscheme """"""""""""""
 " Set vim to use 256 color
@@ -139,5 +125,19 @@ inoremap kj <Esc>
 " Ensure backspaces work properly
 set bs=2
 
-" Set vim to expect a paste operation
-set paste
+let g:acp_behaviorJavaEclimLength = 3
+function MeetsForJavaEclim(context)
+  return g:acp_behaviorJavaEclimLength >= 0 &&
+        \ a:context =~ '\k\.\k\{' . g:acp_behaviorJavaEclimLength . ',}$'
+endfunction
+let g:acp_behavior = {
+    \ 'java': [{
+      \ 'command': "\<c-x>\<c-u>",
+      \ 'completefunc' : 'eclim#java#complete#CodeComplete',
+      \ 'meets'        : 'MeetsForJavaEclim',
+    \ }]
+  \ }
+
+" Enable spell checking for non-code
+set spell spelllang=en_ca
+set diffopt+=iwhite
