@@ -35,8 +35,8 @@ nnoremap ZX :qa<CR>
 
 " Copy and paste between any two vim sessions
 " REQUIRES xclip package to be installed
-vmap <F6> :!xclip -f -sel clip<CR>
-map <F7> :-1r !xclip -o -sel clip<CR>
+vmap <F5> :!xclip -f -sel clip<CR>
+map <F6> :-1r !xclip -o -sel clip<CR>
 
 " Tap 'f' in command-mode to display name of the function the cursor is in.
 fun! ShowFuncName()
