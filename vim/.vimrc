@@ -81,6 +81,7 @@ filetype plugin on
 if has("autocmd")
     autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     autocmd BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
+    autocmd BufRead *.rb set shiftwidth=2
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 endif
 
@@ -141,3 +142,19 @@ let g:acp_behavior = {
 " Enable spell checking for non-code
 set spell spelllang=en_ca
 set diffopt+=iwhite
+
+" Set file encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Use conceal to draw lambda and not as special characters
+if has('conceal')
+    hi! link Conceal Operator
+    set conceallevel=2
+
+    " Load these rules for every syntax
+    if has("autocmd")
+        autocmd Syntax * syn keyword Operator lambda conceal cchar=λ
+        autocmd Syntax * syn keyword Operator not conceal cchar=¬
+    endif
+endif
