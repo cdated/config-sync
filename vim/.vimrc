@@ -31,12 +31,10 @@ set number
 " missing ZZ and ZQ counterparts:
 " quick save-buffer and quit-everything
 nnoremap ZS :w<CR>
-nnoremap ZX :qa<CR>
+nnoremap ZX :qa!<CR>
 
-" Copy and paste between any two vim sessions
-" REQUIRES xclip package to be installed
-vmap <F5> :!xclip -f -sel clip<CR>
-map <F6> :-1r !xclip -o -sel clip<CR>
+" Use system clipboard
+set clipboard=unnamedplus
 
 " Tap 'f' in command-mode to display name of the function the cursor is in.
 fun! ShowFuncName()
@@ -47,13 +45,13 @@ fun! ShowFuncName()
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
-map f :call ShowFuncName() <CR>
+nnoremap f :call ShowFuncName() <CR>
 
 " Use control + (HJKL) to navigate between vim splits
-map <C-j> <C-W>j<C-W>_
-map <C-k> <C-W>k<C-W>_
-map <C-h> <C-W>h<C-W>_
-map <C-l> <C-W>l<C-W>_
+nnoremap <C-j> <C-W>j<C-W>_
+nnoremap <C-k> <C-W>k<C-W>_
+nnoremap <C-h> <C-W>h<C-W>_
+nnoremap <C-l> <C-W>l<C-W>_
 
 " Save with F2
 inoremap <F2> <c-o>:w<cr>
@@ -79,10 +77,10 @@ filetype plugin on
 
 " Python specific indenting
 if has("autocmd")
-    autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-    autocmd BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
-    autocmd BufRead *.rb set shiftwidth=2
-    autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+    au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+    au BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
+    au BufRead *.rb set shiftwidth=2
+    au BufWritePre *.py normal m`:%s/\s\+$//e ``
 endif
 
 " Change the color of comments for dark backgrounds
@@ -98,7 +96,7 @@ set noswapfile
 call pathogen#infect()
 
 " Tag completion after a 'comma slash'
-imap ,/ </<C-X><C-O>
+inoremap ,/ </<C-X><C-O>
 
 " Save fold states
 au BufWinLeave * silent! mkview
@@ -120,24 +118,8 @@ if &diff
 endif
 
 """"""""""""""" Misc """"""""""""""""""
-" Shortcut to escape
-inoremap kj <Esc>
-
 " Ensure backspaces work properly
 set bs=2
-
-let g:acp_behaviorJavaEclimLength = 3
-function MeetsForJavaEclim(context)
-  return g:acp_behaviorJavaEclimLength >= 0 &&
-        \ a:context =~ '\k\.\k\{' . g:acp_behaviorJavaEclimLength . ',}$'
-endfunction
-let g:acp_behavior = {
-    \ 'java': [{
-      \ 'command': "\<c-x>\<c-u>",
-      \ 'completefunc' : 'eclim#java#complete#CodeComplete',
-      \ 'meets'        : 'MeetsForJavaEclim',
-    \ }]
-  \ }
 
 " Enable spell checking for non-code
 set spell spelllang=en_ca
@@ -149,12 +131,37 @@ set fileencoding=utf-8
 
 " Use conceal to draw lambda and not as special characters
 if has('conceal')
+    if has("autocmd")
+        au Syntax * syn keyword Operator lambda conceal cchar=λ
+        au Syntax ruby syn match rubyKeyword "->" conceal cchar=λ
+        au Syntax haskell syn match hsKeyword "\\" conceal cchar=λ
+        au Syntax * syn keyword Operator not conceal cchar=¬
+    endif
     hi! link Conceal Operator
     set conceallevel=2
-
-    " Load these rules for every syntax
-    if has("autocmd")
-        autocmd Syntax * syn keyword Operator lambda conceal cchar=λ
-        autocmd Syntax * syn keyword Operator not conceal cchar=¬
-    endif
 endif
+
+if has("autocmd")
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+endif
+
+let mapleader = ","
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Shortcut to escape
+inoremap jk <esc>
+vnoremap jk <esc>
+
+" disable button for vim key training
+inoremap <esc> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+" switch buffers without saving
+set hidden
