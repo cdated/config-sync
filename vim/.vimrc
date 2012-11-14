@@ -58,10 +58,10 @@ inoremap <F2> <c-o>:w<cr>
 
 " Set folding options
 set foldcolumn=2
-set foldmethod=syntax
+set foldmethod=indent
 " Limit folding
 set foldnestmax=2
-set foldminlines=2
+set foldminlines=20
 " Use spacebar to open folds
 nnoremap <space> za
 vnoremap <space> zf
@@ -70,7 +70,6 @@ hi foldcolumn ctermbg=8
 hi folded ctermbg=8
 
 " Show non-printed characters and tabs as arrows
-set list
 set listchars=tab:>-,trail:-
 
 filetype plugin on
@@ -99,8 +98,8 @@ call pathogen#infect()
 inoremap ,/ </<C-X><C-O>
 
 " Save fold states
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
+"au BufWinLeave * silent! mkview
+"au BufWinEnter * silent! loadview
 
 
 """""""""""" Colorscheme """"""""""""""
@@ -121,8 +120,7 @@ endif
 " Ensure backspaces work properly
 set bs=2
 
-" Enable spell checking for non-code
-set spell spelllang=en_ca
+" Diff ignore whitespace
 set diffopt+=iwhite
 
 " Set file encoding
@@ -141,6 +139,22 @@ if has('conceal')
     set conceallevel=2
 endif
 
+let mapleader = ","
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
+nnoremap <leader>sh :set list! spell! spelllang=en_ca<cr>
+
+" Shortcut to escape
+inoremap jk <esc>
+vnoremap jk <esc>
+
+" disable button for vim key training
+noremap <up> <PageUp>
+noremap <down> <PageDown>
+noremap <left> <nop>
+noremap <right> <nop>
+
 if has("autocmd")
     au VimEnter * RainbowParenthesesToggle
     au Syntax * RainbowParenthesesLoadRound
@@ -148,20 +162,7 @@ if has("autocmd")
     au Syntax * RainbowParenthesesLoadBraces
 endif
 
-let mapleader = ","
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Shortcut to escape
-inoremap jk <esc>
-vnoremap jk <esc>
-
-" disable button for vim key training
-inoremap <esc> <nop>
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-
 " switch buffers without saving
 set hidden
+
+set hlsearch
