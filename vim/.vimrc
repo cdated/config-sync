@@ -53,9 +53,6 @@ nnoremap <C-k> <C-W>k<C-W>_
 nnoremap <C-h> <C-W>h<C-W>_
 nnoremap <C-l> <C-W>l<C-W>_
 
-" Save with F2
-inoremap <F2> <c-o>:w<cr>
-
 " Set folding options
 set foldcolumn=2
 set foldmethod=indent
