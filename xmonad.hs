@@ -1,4 +1,3 @@
-
 import XMonad
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.Submap
@@ -33,14 +32,13 @@ myTabTheme = defaultTheme { activeColor = "DarkSlateGray"
                           , decoWidth = 200
                           , decoHeight = 16 }
 
-myLayout = avoidStruts (tiled ||| Full ||| myFloat ||| twoPane ||| myWide)
+myLayout = avoidStruts (tiled ||| Full ||| myFloat ||| myWide)
     where
       tiled = named "Tiled" (maximize (Tall nmaster delta ratio))
       nmaster = 1
       ratio = 75/175
       delta = 1/175
       myFloat = named "Floating" (maximize (simpleFloat' shrinkText myTabTheme))
-      twoPane = TwoPane (1/100) (3/4)
       myWide = Mirror $ Tall nmaster delta ratio
         where
             -- The default number of windows in the master pane
