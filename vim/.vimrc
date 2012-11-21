@@ -71,12 +71,13 @@ set listchars=tab:>-,trail:-
 
 filetype plugin on
 
-" Python specific indenting
+" Language specific style
 if has("autocmd")
     au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     au BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
     au BufRead *.rb set shiftwidth=2
     au BufWritePre *.py normal m`:%s/\s\+$//e ``
+    au BufNewFile,BufRead *.py compiler nose
 endif
 
 " Change the color of comments for dark backgrounds
@@ -117,8 +118,6 @@ endif
 " Ensure backspaces work properly
 set bs=2
 
-" Diff ignore whitespace
-set diffopt+=iwhite
 
 " Set file encoding
 set encoding=utf-8
@@ -136,11 +135,21 @@ if has('conceal')
     set conceallevel=2
 endif
 
+" Specially mapped shortcuts
 let mapleader = ","
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Navigate the buffers
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
+
+" Run PyLint
+nnoremap <leader>pl :PyLint<cr>
+
+" Toggle spell checking 
 nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
-nnoremap <leader>sh :set list! spell! spelllang=en_ca<cr>
+
+" Diff ignore whitespace
+nnoremap <leader>wp :set diffopt+=iwhite
 
 " Shortcut to escape
 inoremap jk <esc>
@@ -162,4 +171,6 @@ endif
 " switch buffers without saving
 set hidden
 
+" Highlight searched strings
+" Searching with '*' highlights all occurences of a word.
 set hlsearch
