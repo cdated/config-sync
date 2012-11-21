@@ -92,6 +92,8 @@ alias pause="mocp -P"
 alias play="mocp -U"
 alias next="mocp -f"
 
+alias python="ipython"
+
 # Exports
 export PYTHONPATH=/usr/lib/python2.7/site-packages:/opt/google-appengine-python:$PYTHONPATH
 export PATH=/home/fieldsb/dev/android/android-sdk-linux_x86/tools:/home/fieldsb/dev/android/android-sdk-linux_x86/platform-tools:$PATH
@@ -99,6 +101,8 @@ export CFLAGS="-Wall"
 export SVN_EDITOR=vim
 export CCACHE_HOME=/home/fieldsb/.ccache
 export TERM=screen-256color
+#export CC=/usr/local/bin/clang
+#export CXX=/usr/local/bin/clang++
 
 # Make quick tarballs
 function bak(){
