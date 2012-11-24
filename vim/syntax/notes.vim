@@ -48,26 +48,6 @@ endif
 highlight def link notesSingleQuoted Special
 highlight def link notesDoubleQuoted String
 
-" Highlight text emphasized in italic font. {{{2
-if has('conceal')
-  syntax region notesItalic matchgroup=notesItalicMarker start=/\<_\k\@=/ end=/_\>\|\n/ contains=@Spell concealends
-  highlight link notesItalicMarker notesHiddenMarker 
-else
-  syntax match notesItalic /\<_\k[^_]*\k_\>/
-endif
-syntax cluster notesInline add=notesItalic
-highlight notesItalic gui=italic
-
-" Highlight text emphasized in bold font. {{{2
-if has('conceal')
-  syntax region notesBold matchgroup=notesBoldMarker start=/\*\k\@=/ end=/\k\@<=\*/ contains=@Spell concealends
-  highlight link notesBoldMarker notesHiddenMarker 
-else
-  syntax match notesBold /\*\k[^*]*\k\*/
-endif
-syntax cluster notesInline add=notesBold
-highlight notesBold gui=bold
-
 " Highlight domain names, URLs, e-mail addresses and filenames. {{{2
 
 " FIXME This setting is lost once the user switches color scheme!
