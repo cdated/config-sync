@@ -118,7 +118,6 @@ endif
 " Ensure backspaces work properly
 set bs=2
 
-
 " Set file encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -149,7 +148,7 @@ nnoremap <leader>pl :PyLint<cr>
 nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
 
 " Diff ignore whitespace
-nnoremap <leader>wp :set diffopt+=iwhite
+nnoremap <leader>ws :set diffopt+=iwhite
 
 " Shortcut to escape
 inoremap jk <esc>
