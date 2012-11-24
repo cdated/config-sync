@@ -59,6 +59,7 @@ set foldmethod=indent
 " Limit folding
 set foldnestmax=2
 set foldminlines=20
+
 " Use spacebar to open folds
 nnoremap <space> za
 vnoremap <space> zf
