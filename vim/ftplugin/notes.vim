@@ -55,14 +55,6 @@ let b:undo_ftplugin .= ' | execute "iunmap <buffer> @"'
 " for this we have to change the (unfortunately) global option &completeopt.
 set completeopt+=longest
 
-" Change plain quotes to curly quotes as they're typed. {{{1
-if g:notes_smart_quotes
-  imap <buffer> <expr> ' xolox#notes#insert_quote(1)
-  imap <buffer> <expr> " xolox#notes#insert_quote(2)
-  let b:undo_ftplugin .= ' | execute "iunmap <buffer> ''"'
-  let b:undo_ftplugin .= ' | execute ''iunmap <buffer> "'''
-endif
-
 " Convert ASCII list bullets to Unicode bullets. {{{1
 if g:notes_smart_quotes
   imap <buffer> <expr> * xolox#notes#insert_bullet('*')
