@@ -21,8 +21,6 @@ set shiftwidth=4
 set expandtab
 set smarttab
 
-" Highlight column 80 and above.
-" match ErrorMsg '\%>80v.\+'
 set showcmd
 
 " Show line numbers
@@ -52,13 +50,6 @@ nnoremap <C-j> <C-W>j<C-W>_
 nnoremap <C-k> <C-W>k<C-W>_
 nnoremap <C-h> <C-W>h<C-W>_
 nnoremap <C-l> <C-W>l<C-W>_
-
-" Set folding options
-set foldcolumn=2
-set foldmethod=indent
-" Limit folding
-set foldnestmax=2
-set foldminlines=20
 
 " Use spacebar to open folds
 nnoremap <space> za
@@ -97,8 +88,8 @@ call pathogen#infect()
 inoremap ,/ </<C-X><C-O>
 
 " Save fold states
-"au BufWinLeave * silent! mkview
-"au BufWinEnter * silent! loadview
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
 
 
 """""""""""" Colorscheme """"""""""""""
@@ -130,6 +121,7 @@ if has('conceal')
         au Syntax ruby syn match rubyKeyword "->" conceal cchar=λ
         au Syntax haskell syn match hsKeyword "\\" conceal cchar=λ
         au Syntax * syn keyword Operator not conceal cchar=¬
+        au Syntax * syn keyword Operator and conceal cchar=&
     endif
     hi! link Conceal Operator
     set conceallevel=2
@@ -139,11 +131,14 @@ endif
 let mapleader = ","
 
 " Navigate the buffers
-nnoremap <leader>bn :bn<cr>
-nnoremap <leader>bp :bp<cr>
+nnoremap <leader>n :bn<cr>
+nnoremap <leader>p :bp<cr>
 
 " Run PyLint
 nnoremap <leader>pl :PyLint<cr>
+
+nnoremap <leader>hi :set nonumber foldcolumn=0<cr>
+nnoremap <leader>sh :set number foldcolumn=2<cr>:set match ErrorMsg '\%>80v.\+'<cr>
 
 " Toggle spell checking 
 nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
@@ -153,13 +148,22 @@ nnoremap <leader>ws :set diffopt+=iwhite
 
 " Shortcut to escape
 inoremap jk <esc>
-vnoremap jk <esc>
 
-" disable button for vim key training
-noremap <up> <PageUp>
-noremap <down> <PageDown>
-noremap <left> <nop>
-noremap <right> <nop>
+" Clear highlighted search
+nnoremap <silent> <cr> :noh<cr><cr>
+
+" Comment out a visually selected region
+vnoremap " :s#^#"#<cr>
+vnoremap -" :s#^"##<cr>
+
+vnoremap # :s#^#\##<cr>
+vnoremap -# :s#^\###<cr>
+
+vnoremap // :s#^#\/\/ #<cr>
+vnoremap -// :s#^\/\/\ ##<cr>
+
+" Blank out a visually selected region without removing lines
+vnoremap -- :s#.*##<cr><cr> :noh<cr><cr>
 
 if has("autocmd")
     au VimEnter * RainbowParenthesesToggle
@@ -174,3 +178,19 @@ set hidden
 " Highlight searched strings
 " Searching with '*' highlights all occurences of a word.
 set hlsearch
+set ruler
+
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    set csre
+    " add any database in current directory
+    if filereadable("$PROJECT/cscope.out")
+        cs add $PROJECT/cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+endif
