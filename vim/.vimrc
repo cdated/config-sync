@@ -17,7 +17,8 @@ endif
 " Handle indenting
 set cindent
 set cino=(0,W$,c1,C1,{0
-set shiftwidth=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 set smarttab
 
@@ -25,11 +26,6 @@ set showcmd
 
 " Show line numbers
 set number
-
-" missing ZZ and ZQ counterparts:
-" quick save-buffer and quit-everything
-nnoremap ZS :w<CR>
-nnoremap ZX :qa!<CR>
 
 " Use system clipboard
 set clipboard=unnamedplus
@@ -67,9 +63,10 @@ filetype plugin on
 if has("autocmd")
     au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     au BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
-    au BufRead *.rb set shiftwidth=2
+    au BufRead *.py set shiftwidth=4
     au BufWritePre *.py normal m`:%s/\s\+$//e ``
     au BufNewFile,BufRead *.py compiler nose
+    au BufNewFile,BufReadPost *.go set filetype=go
 endif
 
 " Change the color of comments for dark backgrounds
@@ -172,7 +169,7 @@ if has("autocmd")
     au Syntax * RainbowParenthesesLoadBraces
 endif
 
-" switch buffers without saving
+" Switch buffers without saving
 set hidden
 
 " Highlight searched strings
@@ -194,3 +191,7 @@ if has("cscope")
         cs add $CSCOPE_DB
     endif
 endif
+
+" Set the notes directory for the vim-notes plugin
+:let g:notes_directory = '~/notes'
+:let g:notes_suffix = '.note'
