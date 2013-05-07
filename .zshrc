@@ -65,8 +65,6 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 HISTFILE=~/.zsh-histfile
 HISTSIZE=1000
 SAVEHIST=1000
-CABAL_PATH=/home/fieldsb/.cabal/bin
-export PATH=/home/fieldsb/dev/android/android-sdk-linux_x86/tools:$CABAL_PATH:$PATH
 
 # End of lines added by compinstall
 autoload -U colors && colors
