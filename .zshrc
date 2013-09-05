@@ -41,10 +41,34 @@ at_blinkoff=%{$'\e[25m'%}
 at_reverseoff=%{$'\e[27m'%}
 at_strikeoff=%{$'\e[29m'%}
 
+function precmd() {
+    # Reset the following variables each time the prompt is printed: branch
 
-PROMPT="
-${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~${fg_white}]
-[${fg_green}%T${fg_white}]: ${at_normal}"
+    # The branch variable holds the git branch for the current path
+    branch=""
+    git_status="`git status -unormal 2>&1`"
+    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+            color=${fg_lgreen}
+        elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+            color=${fg_green}
+        else
+            color=${fg_red}
+        fi
+        if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
+            branch=`echo $git_status | head -n1 | cut -f4 -d' '`
+        else
+            # Detached HEAD.  (branch=HEAD is a faster alternative.)
+            branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null || echo HEAD`)"
+        fi
+        branch="${fg_white}@$color"$branch"${fg_white}"
+    fi
+}
+
+PROMPT='
+${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~$branch${at_normal}${fg_white}]
+[${fg_green}%T${fg_white}]: ${at_normal}'
+
 
 # Set the auto completion on
 autoload -U compinit
@@ -90,8 +114,6 @@ alias pause="mocp -P"
 alias play="mocp -U"
 alias next="mocp -f"
 
-alias python="ipython"
-
 # Exports
 export CFLAGS="-Wall"
 export SVN_EDITOR=vim
@@ -99,11 +121,10 @@ export SVN_EDITOR=vim
 # Make quick tarballs
 function bak(){
         DATE=$(date +%Y_%m_%d_%H-%M)
-                tar -cjvf ${1%/}.$DATE.tar.bz ${1%/}
+                tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
 }
 
 export TZ=:/usr/share/zoneinfo/America/New_York
-
 LANG=en_US.UTF-8
 LC_CTYPE="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
