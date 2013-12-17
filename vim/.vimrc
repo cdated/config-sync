@@ -17,8 +17,8 @@ endif
 " Handle indenting
 set cindent
 set cino=(0,W$,c1,C1,{0
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=8
 set expandtab
 set smarttab
 
@@ -55,15 +55,16 @@ hi foldcolumn ctermbg=8
 hi folded ctermbg=8
 
 " Show non-printed characters and tabs as arrows
-set listchars=tab:>-,trail:-
+exec "set listchars=tab:\uBB-,trail:\uB7,nbsp:~"
+set list
 
 filetype plugin on
 
 " Language specific style
 if has("autocmd")
     au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-    au BufRead *.c,*.cc,*.cpp,*fsm*.h,*.java set tabstop=8
-    au BufRead *.py set shiftwidth=4
+    au BufRead *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
+    au BufRead *.rb,*.html set shiftwidth=2
     au BufWritePre *.py normal m`:%s/\s\+$//e ``
     au BufNewFile,BufRead *.py compiler nose
     au BufNewFile,BufReadPost *.go set filetype=go
@@ -135,7 +136,7 @@ nnoremap <leader>p :bp<cr>
 nnoremap <leader>pl :PyLint<cr>
 
 nnoremap <leader>hi :set nonumber foldcolumn=0<cr>
-nnoremap <leader>sh :set number foldcolumn=2<cr>:set match ErrorMsg '\%>80v.\+'<cr>
+nnoremap <leader>sh :set number foldcolumn=2
 
 " Toggle spell checking 
 nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
@@ -177,21 +178,18 @@ set hidden
 set hlsearch
 set ruler
 
-if has("cscope")
-    set csprg=/usr/bin/cscope
-    set csto=0
-    set cst
-    set nocsverb
-    set csre
-    " add any database in current directory
-    if filereadable("$PROJECT/cscope.out")
-        cs add $PROJECT/cscope.out
-        " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-endif
+" == Extra mappings for opening buffers from ctags ==
+" Open in another tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" Open with horizontal split
+map <C-?> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Set the notes directory for the vim-notes plugin
-:let g:notes_directory = '~/notes'
-:let g:notes_suffix = '.note'
+" Highlight the 81st character
+call matchadd('ColorColumn', '\%81v', 100)
+
+" Swap v and CTRL-V to do VISUAL BLOCK by default
+nnoremap    v   <C-V>
+nnoremap <C-V>     v
+
+vnoremap    v   <C-V>
+vnoremap <C-V>     v
