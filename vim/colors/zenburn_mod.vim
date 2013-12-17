@@ -261,6 +261,7 @@ hi SpellLocal guisp=#7cac7c guifg=#9ccc9c
 if &t_Co > 255
     hi Boolean         ctermfg=181
     hi Character       ctermfg=169   cterm=bold
+    hi ColorColumn     ctermbg=52
     hi Comment         ctermfg=113
     hi Conditional     ctermfg=215   cterm=bold
     hi Constant        ctermfg=181   cterm=bold
@@ -296,7 +297,7 @@ if &t_Co > 255
     hi SpecialChar     ctermfg=181   cterm=bold
     hi SpecialComment  ctermfg=113   cterm=bold
     hi Special         ctermfg=181
-    hi SpecialKey      ctermfg=151
+    hi SpecialKey      ctermfg=236
     hi Statement       ctermfg=187   ctermbg=234     cterm=none
     hi StatusLine      ctermfg=236   ctermbg=186
     hi StatusLineNC    ctermfg=235   ctermbg=113
