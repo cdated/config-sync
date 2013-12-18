@@ -178,11 +178,8 @@ set hidden
 set hlsearch
 set ruler
 
-" == Extra mappings for opening buffers from ctags ==
-" Open in another tab
+" Open ctags result in another tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" Open with horizontal split
-map <C-?> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Highlight the 81st character
 call matchadd('ColorColumn', '\%81v', 100)
