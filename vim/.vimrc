@@ -65,6 +65,7 @@ if has("autocmd")
     au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     au BufRead *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
     au BufRead *.rb,*.html set shiftwidth=2
+    au BufRead *.rb colorscheme sexy-railscasts-256
     au BufWritePre *.py normal m`:%s/\s\+$//e ``
     au BufNewFile,BufRead *.py compiler nose
     au BufNewFile,BufReadPost *.go set filetype=go
