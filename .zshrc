@@ -65,10 +65,9 @@ function precmd() {
     fi
 }
 
-PROMPT='
+PROMPT="
 ${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~$branch${at_normal}${fg_white}]
-[${fg_green}%T${fg_white}]: ${at_normal}'
-
+[${fg_green}%T${fg_white}]: ${at_normal}"
 
 # Set the auto completion on
 autoload -U compinit
@@ -94,29 +93,16 @@ SAVEHIST=1000
 autoload -U colors && colors
 
 # Aliases
-alias chrome=google-chrome
 alias grep='grep --color=auto'
 alias watcher='watch -d -n1 ls -aslth'
 alias ls='ls --color=auto'
 alias vi=vim
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
-alias which-command=whence
-
-alias emacs="nohup emacs > /dev/null &"
-
-alias startx='ssh-agent startx'
-alias nginx="cd /etc/nginx/html"
 
 alias gofmt="gofmt -w -tabs=false -tabwidth=4"
 alias indent="xmlindent -w"
 
-alias pause="mocp -P"
-alias play="mocp -U"
-alias next="mocp -f"
-
-# Exports
-export CFLAGS="-Wall"
-export SVN_EDITOR=vim
+alias cgrep="LANG=C grep"
 
 # Make quick tarballs
 function bak(){

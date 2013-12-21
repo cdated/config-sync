@@ -260,7 +260,7 @@ hi SpellLocal guisp=#7cac7c guifg=#9ccc9c
 " Entering Kurt zone
 if &t_Co > 255
     hi Boolean         ctermfg=181
-    hi Character       ctermfg=169   cterm=bold
+    hi Character       ctermfg=9   cterm=bold
     hi ColorColumn     ctermbg=52
     hi Comment         ctermfg=113
     hi Conditional     ctermfg=215   cterm=bold
@@ -277,9 +277,10 @@ if &t_Co > 255
     hi Directory       ctermfg=109   cterm=bold
     hi ErrorMsg        ctermfg=115   ctermbg=236     cterm=bold
     hi Exception       ctermfg=249   cterm=bold
-    hi Float           ctermfg=4     cterm=bold
-    hi Function        ctermfg=228
+    hi Float           ctermfg=113   cterm=bold
+    hi Function        ctermfg=33    cterm=bold
     hi Identifier      ctermfg=208
+    hi Include         ctermfg=208
     hi IncSearch       ctermbg=228   ctermfg=238
     hi Keyword         ctermfg=128   cterm=bold
     hi Label           ctermfg=187   cterm=underline
@@ -287,18 +288,18 @@ if &t_Co > 255
     hi Macro           ctermfg=161   cterm=bold
     hi ModeMsg         ctermfg=223   cterm=none
     hi MoreMsg         ctermfg=15    cterm=bold
-    hi Number          ctermfg=4
+    hi Number          ctermfg=114
     hi Operator        ctermfg=204
     hi PreCondit       ctermfg=180   cterm=bold
     hi PreProc         ctermfg=223   cterm=bold
     hi Question        ctermfg=15    cterm=bold
-    hi Repeat          ctermfg=223   cterm=bold
+    hi Repeat          ctermfg=215   cterm=bold
     hi Search          ctermfg=230   ctermbg=236
-    hi SpecialChar     ctermfg=181   cterm=bold
+    hi SpecialChar     ctermfg=168   cterm=bold
     hi SpecialComment  ctermfg=113   cterm=bold
-    hi Special         ctermfg=181
+    hi Special         ctermfg=168
     hi SpecialKey      ctermfg=236
-    hi Statement       ctermfg=187   ctermbg=234     cterm=none
+    hi Statement       ctermfg=31    ctermbg=234     cterm=none
     hi StatusLine      ctermfg=236   ctermbg=186
     hi StatusLineNC    ctermfg=235   ctermbg=113
     hi StorageClass    ctermfg=249   cterm=bold
