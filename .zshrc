@@ -95,7 +95,6 @@ autoload -U colors && colors
 # Aliases
 alias grep='grep --color=auto'
 alias watcher='watch -d -n1 ls -aslth'
-alias ls='ls --color=auto'
 alias vi=vim
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
@@ -103,6 +102,14 @@ alias gofmt="gofmt -w -tabs=false -tabwidth=4"
 alias indent="xmlindent -w"
 
 alias cgrep="LANG=C grep"
+
+# OS dependent aliases
+if [ "$(uname)" = "Darwin" ]; then
+    alias ls='ls -G'
+    alias vim='mvim -v'
+else
+    alias ls='ls --color=auto'
+fi
 
 # Make quick tarballs
 function bak(){

@@ -277,7 +277,7 @@ if &t_Co > 255
     hi Directory       ctermfg=109   cterm=bold
     hi ErrorMsg        ctermfg=115   ctermbg=236     cterm=bold
     hi Exception       ctermfg=249   cterm=bold
-    hi Float           ctermfg=113   cterm=bold
+    hi Float           ctermfg=146
     hi Function        ctermfg=33    cterm=bold
     hi Identifier      ctermfg=208
     hi Include         ctermfg=208
@@ -288,7 +288,7 @@ if &t_Co > 255
     hi Macro           ctermfg=161   cterm=bold
     hi ModeMsg         ctermfg=223   cterm=none
     hi MoreMsg         ctermfg=15    cterm=bold
-    hi Number          ctermfg=114
+    hi Number          ctermfg=152
     hi Operator        ctermfg=204
     hi PreCondit       ctermfg=180   cterm=bold
     hi PreProc         ctermfg=223   cterm=bold
