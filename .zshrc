@@ -41,6 +41,15 @@ at_blinkoff=%{$'\e[25m'%}
 at_reverseoff=%{$'\e[27m'%}
 at_strikeoff=%{$'\e[29m'%}
 
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-N-}/(main|viins)/-I-}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 function precmd() {
     # Reset the following variables each time the prompt is printed: branch
 
@@ -66,7 +75,7 @@ function precmd() {
 }
 
 PROMPT="
-${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~$branch${at_normal}${fg_white}]
+${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~$branch${at_normal}${fg_white}] ${VIMODE}
 [${fg_green}%T${fg_white}]: ${at_normal}"
 
 # Set the auto completion on
@@ -77,6 +86,8 @@ compinit
 # setopt correctall
 setopt autocd
 setopt auto_resume
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
 
 ## Enables the extgended globbing features
 setopt extendedglob
