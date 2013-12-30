@@ -109,6 +109,8 @@ alias watcher='watch -d -n1 ls -aslth'
 alias vi=vim
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
+alias tmux="tmux -2"
+
 alias gofmt="gofmt -w -tabs=false -tabwidth=4"
 alias indent="xmlindent -w"
 
