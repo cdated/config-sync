@@ -7,21 +7,11 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cdated"
 
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 # Non-OMZ Configurations
-
-# Use vim modes and use right prompt to display mode
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-N-}/(main|viins)/-I-}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 # Set the auto completion on
 autoload -U compinit

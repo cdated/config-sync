@@ -28,7 +28,7 @@ set showcmd
 set number
 
 " Use system clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Tap 'f' in command-mode to display name of the function the cursor is in.
 fun! ShowFuncName()
@@ -62,6 +62,7 @@ filetype plugin on
 
 " Language specific style
 if has("autocmd")
+    au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     au BufRead *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
     au BufRead *.rb,*.html set shiftwidth=2
