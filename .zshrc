@@ -7,7 +7,27 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cdated"
 
-plugins=(git vi-mode)
+plugins=(git vi-mode web-search cp brew gitfast mvn wd)
+
+## Plugin Descriptions ##
+#
+# web-search: enter a search query from the shell:
+# `google magnets`
+#
+# cp: displays progress when using cpv instead of cp
+# `cpv SRC DEST`
+#
+# brew: add commandline completion for Homebrew on OSX
+#
+# gitfast: supposedly faster completion
+#
+# mvn: add commandline completion for maven
+#
+# wd: add aliases to 'cd DEST' on the fly
+# `wd add config`
+# `wd config`
+#
+## End Descriptions ##
 
 source $ZSH/oh-my-zsh.sh
 
