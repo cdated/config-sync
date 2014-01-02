@@ -192,3 +192,7 @@ nnoremap <C-V>     v
 
 vnoremap    v   <C-V>
 vnoremap <C-V>     v
+
+" Create a backup copy in tmp when saving over a file
+set backup
+set backupdir=/tmp/.backup
