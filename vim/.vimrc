@@ -18,9 +18,10 @@ endif
 set cindent
 set cino=(0,W$,c1,C1,{0
 set shiftwidth=4
-set tabstop=8
+set tabstop=4
 set expandtab
 set smarttab
+set wrap
 
 set showcmd
 
@@ -76,7 +77,7 @@ endif
 " highlight Comment ctermfg=darkgreen
 
 " Set ctags to look for tags file in parent directory
-set tags=tags;
+set tags=TAGS;
 
 " Disable swap files
 set noswapfile

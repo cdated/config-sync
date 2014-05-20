@@ -41,11 +41,13 @@ at_blinkoff=%{$'\e[25m'%}
 at_reverseoff=%{$'\e[27m'%}
 at_strikeoff=%{$'\e[29m'%}
 
+# Full git prompt: $(git_prompt_info)$(git_prompt_status)$(git_prompt_ahead)
+
 PROMPT='
-${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~${fg_white}]${at_normal} %{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}$(git_prompt_ahead)%{$reset_color%}
+${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~${fg_white}]${at_normal}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}$(git_prompt_ahead)%{$reset_color%}
 [${fg_green}%T${fg_white}]: ${at_normal}'
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" ♨  ${fg_brown}"
+ZSH_THEME_GIT_PROMPT_PREFIX="${fg_purple}  ♨  ${fg_brown}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="${fg_green} ☂" # Ⓓ
 ZSH_THEME_GIT_PROMPT_UNTRACKED="${fg_cyan} ✭" # ⓣ
