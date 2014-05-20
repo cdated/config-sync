@@ -102,3 +102,5 @@ LC_IDENTIFICATION="en_US.UTF-8"
 LC_ALL=
 
 stty -ixon
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
