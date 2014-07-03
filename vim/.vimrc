@@ -68,13 +68,11 @@ if has("autocmd")
     au BufRead *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
     au BufRead *.rb,*.html set shiftwidth=2
     au BufRead *.rb colorscheme sexy-railscasts-256
+    au BufRead *.html colorscheme desertEx
     au BufWritePre *.py normal m`:%s/\s\+$//e ``
     au BufNewFile,BufRead *.py compiler nose
     au BufNewFile,BufReadPost *.go set filetype=go
 endif
-
-" Change the color of comments for dark backgrounds
-" highlight Comment ctermfg=darkgreen
 
 " Set ctags to look for tags file in parent directory
 set tags=TAGS;
@@ -88,9 +86,11 @@ call pathogen#infect()
 " Tag completion after a 'comma slash'
 inoremap ,/ </<C-X><C-O>
 
-" Save fold states
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
+" Jump to the last position when reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
 
 
 """""""""""" Colorscheme """"""""""""""
