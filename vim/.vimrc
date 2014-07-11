@@ -83,6 +83,12 @@ set noswapfile
 " Use vim-pathogen, needed for syntastic
 call pathogen#infect()
 
+" Automatically bring up the location list of issues
+let g:syntastic_auto_loc_list = 1
+
+" Jump to the first error
+let g:syntastic_auto_jump = 2
+
 " Tag completion after a 'comma slash'
 inoremap ,/ </<C-X><C-O>
 

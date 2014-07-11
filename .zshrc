@@ -41,7 +41,7 @@ compinit
 # setopt correctall
 setopt autocd
 setopt auto_resume
-bindkey -v
+bindkey -e
 bindkey -M viins 'jk' vi-cmd-mode
 
 ## Enables the extgended globbing features
