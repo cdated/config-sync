@@ -271,7 +271,7 @@ if &t_Co > 255
     hi Delimiter       ctermfg=245
     " Diff colors taken from evening colorscheme
     hi DiffAdd         ctermbg=4     cterm=bold
-    hi DiffChange      ctermbg=5   cterm=bold
+    hi DiffChange      ctermbg=168   cterm=bold
     hi DiffDelete      ctermfg=12    ctermbg=6       cterm=bold
     hi DiffText        ctermbg=1     cterm=bold      cterm=reverse  cterm=bold
     hi Directory       ctermfg=109   cterm=bold

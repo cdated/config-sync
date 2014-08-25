@@ -87,7 +87,7 @@ call pathogen#infect()
 let g:syntastic_auto_loc_list = 1
 
 " Jump to the first error
-let g:syntastic_auto_jump = 2
+"let g:syntastic_auto_jump = 2
 
 " Tag completion after a 'comma slash'
 inoremap ,/ </<C-X><C-O>
@@ -203,3 +203,10 @@ vnoremap <C-V>     v
 " Create a backup copy in tmp when saving over a file
 set backup
 set backupdir=/tmp
+
+" Disable include checks for C/C++
+"let g:syntastic_c_remove_include_errors = 1
+
+let g:syntastic_c_remove_include_errors = 1
+
+let g:syntastic_javascript_checkers = ['jshint']
