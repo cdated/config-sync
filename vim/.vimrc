@@ -18,7 +18,7 @@ endif
 set cindent
 set cino=(0,W$,c1,C1,{0
 set shiftwidth=4
-set tabstop=4
+set tabstop=8
 set expandtab
 set smarttab
 set wrap
@@ -84,7 +84,7 @@ set noswapfile
 call pathogen#infect()
 
 " Automatically bring up the location list of issues
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 
 " Jump to the first error
 "let g:syntastic_auto_jump = 2
@@ -141,9 +141,7 @@ let mapleader = ","
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>p :bp<cr>
 
-" Run PyLint
-nnoremap <leader>pl :PyLint<cr>
-
+" Hide/Show the line numbers and fold column
 nnoremap <leader>hi :set nonumber foldcolumn=0<cr>
 nnoremap <leader>sh :set number foldcolumn=2
 
@@ -152,6 +150,15 @@ nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
 
 " Diff ignore whitespace
 nnoremap <leader>ws :set diffopt+=iwhite
+
+" Toggle printing whitespace characters
+nnoremap <leader>li :<c-u>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <cr>
+
+" Format JSON
+nnoremap <Leader>js !python -m json.tool<CR>
+
+" Toggle paste mode
+set pastetoggle=<leader>pa
 
 " Shortcut to escape
 inoremap jk <esc>
@@ -169,6 +176,12 @@ vnoremap -# :s#^\###<cr>
 vnoremap // :s#^#\/\/ #<cr>
 vnoremap -// :s#^\/\/\ ##<cr>
 
+" Use double slashes for Haskell comment shortcut
+if has("autocmd")
+    au Syntax haskell vnoremap // :s#^#-- #<cr>
+    au Syntax haskell vnoremap -// :s#^-- ##<cr>
+endif
+
 " Blank out a visually selected region without removing lines
 vnoremap -- :s#.*##<cr><cr> :noh<cr><cr>
 
@@ -185,6 +198,7 @@ set hidden
 " Highlight searched strings
 " Searching with '*' highlights all occurences of a word.
 set hlsearch
+set incsearch
 set ruler
 
 " Open ctags result in another tab
