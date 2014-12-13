@@ -224,3 +224,9 @@ set backupdir=/tmp
 let g:syntastic_c_remove_include_errors = 1
 
 let g:syntastic_javascript_checkers = ['jshint']
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+" Automatically close xml tags, 1 to close HTML tags also
+let g:xmledit_enable_html = 0
