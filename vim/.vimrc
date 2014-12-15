@@ -14,6 +14,20 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+"""""""""""" Colorscheme """"""""""""""
+" Set vim to use 256 color
+set t_Co=256
+
+" Set default colorscheme
+colorscheme zenburn_mod
+let g:zenburn_high_Contrast=1
+
+" Explicitly use tell vim to use the same scheme in vimdiff
+if &diff
+        colorscheme zenburn_mod
+        let g:zenburn_high_Contrast=1
+endif
+
 " Handle indenting
 set cindent
 set cino=(0,W$,c1,C1,{0
@@ -64,11 +78,11 @@ filetype plugin on
 " Language specific style
 if has("autocmd")
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    au BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-    au BufRead *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
-    au BufRead *.rb,*.html set shiftwidth=2
-    au BufRead *.rb colorscheme sexy-railscasts-256
-    au BufRead *.html colorscheme desertEx
+    au BufEnter *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+    au BufEnter *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
+    au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
+    au FileType css,html,js colorscheme sexy-railscasts-256
+    au FileType css,html set syntax=scss
     au BufWritePre *.py normal m`:%s/\s\+$//e ``
     au BufNewFile,BufRead *.py compiler nose
     au BufNewFile,BufReadPost *.go set filetype=go
@@ -98,20 +112,6 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-
-"""""""""""" Colorscheme """"""""""""""
-" Set vim to use 256 color
-set t_Co=256
-
-" Set default colorscheme
-colorscheme zenburn_mod
-let g:zenburn_high_Contrast=1
-
-" Explicitly use tell vim to use the same scheme in vimdiff
-if &diff
-        colorscheme zenburn_mod
-        let g:zenburn_high_Contrast=1
-endif
 
 """"""""""""""" Misc """"""""""""""""""
 " Ensure backspaces work properly
@@ -190,6 +190,7 @@ if has("autocmd")
     au Syntax * RainbowParenthesesLoadRound
     au Syntax * RainbowParenthesesLoadSquare
     au Syntax * RainbowParenthesesLoadBraces
+    au Syntax * RainbowParenthesesLoadChevrons
 endif
 
 " Switch buffers without saving
@@ -230,3 +231,4 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 " Automatically close xml tags, 1 to close HTML tags also
 let g:xmledit_enable_html = 0
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
