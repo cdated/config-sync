@@ -7,6 +7,8 @@ cdated's dot files, it doesn't get more personal than this.
 
 My heavily opinionated tmux.conf file lives [here](https://github.com/cdated/config-sync/blob/master/.tmux.conf).
 
+The rationale for all the changes is in the following blog post: http://cdated.com/the-wonderful-world-of-tmux/
+
 ## Vim Colorscheme
 
 My extremely personalized colorscheme can be found [here](https://github.com/cdated/config-sync/blob/master/vim/colors/zenburn_mod.vim).
