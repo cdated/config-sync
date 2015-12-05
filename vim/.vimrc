@@ -14,6 +14,15 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+" Disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" Default number format to base 10
+set nrformats=
+
 """""""""""" Colorscheme """"""""""""""
 " Set vim to use 256 color
 set t_Co=256
@@ -24,8 +33,8 @@ let g:zenburn_high_Contrast=1
 
 " Explicitly use tell vim to use the same scheme in vimdiff
 if &diff
-        colorscheme zenburn_mod
-        let g:zenburn_high_Contrast=1
+  colorscheme zenburn_mod
+  let g:zenburn_high_Contrast=1
 endif
 
 " Handle indenting
@@ -45,7 +54,7 @@ set number
 " Use system clipboard
 set clipboard=unnamed
 
-" Tap 'f' in command-mode to display name of the function the cursor is in.
+" Display name of the function the cursor is in.
 fun! ShowFuncName()
   let lnum = line(".")
   let col = col(".")
@@ -54,7 +63,6 @@ fun! ShowFuncName()
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
-nnoremap f :call ShowFuncName() <CR>
 
 " Use control + (HJKL) to navigate between vim splits
 nnoremap <C-j> <C-W>j<C-W>_
@@ -74,18 +82,24 @@ exec "set listchars=tab:\uBB-,trail:\uB7,nbsp:~"
 set list
 
 filetype plugin on
+filetype indent on
 
 " Language specific style
 if has("autocmd")
-    au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    au BufEnter *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-    au BufEnter *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
-    au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
-    au FileType css,html,js colorscheme sexy-railscasts-256
-    au FileType css,html set syntax=scss
-    au BufWritePre *.py normal m`:%s/\s\+$//e ``
-    au BufNewFile,BufRead *.py compiler nose
-    au BufNewFile,BufReadPost *.go set filetype=go
+  au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  au BufEnter *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+  au BufEnter *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
+  au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
+  au FileType css set syntax=scss
+  au FileType css,html,js,html.mustache colorscheme sexy-railscasts-256
+  au BufWritePre *.py normal m`:%s/\s\+$//e ``
+  au BufNewFile,BufReadPost *.go set filetype=go
+  au FileType go set tabstop=4
+  au FileType go set noet
+
+  set autoindent
+  au BufWrite *.css,*.html,*.js,*.rb :Autoformat
+  au BufRead,BufNewFile *.handlebars,*.hbs set ft=html.mustache
 endif
 
 " Set ctags to look for tags file in parent directory
@@ -99,9 +113,6 @@ call pathogen#infect()
 
 " Automatically bring up the location list of issues
 let g:syntastic_auto_loc_list = 0
-
-" Jump to the first error
-"let g:syntastic_auto_jump = 2
 
 " Tag completion after a 'comma slash'
 inoremap ,/ </<C-X><C-O>
@@ -186,11 +197,15 @@ endif
 vnoremap -- :s#.*##<cr><cr> :noh<cr><cr>
 
 if has("autocmd")
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-    au Syntax * RainbowParenthesesLoadChevrons
+    " Check the file extension isn't html since there is a bug
+    " that I'd rather not deal with when editing html
+    if (expand('%:e') != "html")
+        au VimEnter * RainbowParenthesesToggle
+        au Syntax * RainbowParenthesesLoadRound
+        au Syntax * RainbowParenthesesLoadSquare
+        au Syntax * RainbowParenthesesLoadBraces
+        au Syntax * RainbowParenthesesLoadChevrons
+    endif
 endif
 
 " Switch buffers without saving
@@ -207,13 +222,6 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Highlight the 81st character
 call matchadd('ColorColumn', '\%81v', 100)
-
-" Swap v and CTRL-V to do VISUAL BLOCK by default
-nnoremap    v   <C-V>
-nnoremap <C-V>     v
-
-vnoremap    v   <C-V>
-vnoremap <C-V>     v
 
 " Create a backup copy in tmp when saving over a file
 set backup
@@ -232,3 +240,24 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Automatically close xml tags, 1 to close HTML tags also
 let g:xmledit_enable_html = 0
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+" TODO: Add 'if darwin' condition
+let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
+
+" Don't bring up nerdtree when any file is opened
+let g:nerdtree_tabs_open_on_console_startup = 0
+" open NERDTree with `Ctrl-n`
+map <C-n> :NERDTreeToggle<CR>
+
+noremap  <C-l> :tabn<CR>
+noremap  <C-h> :tabp<CR>
+noremap  <C-n> :tabnew<CR>
+
+function! Timestamp()
+  let date = system("date '+%B %d, %Y %I:%M %p'")[:-2]
+  execute "normal! o" . "\n" . date . "\n"
+endfunction
+
+command! Timestamp call Timestamp()
+
+let g:mustache_abbreviations = 1
