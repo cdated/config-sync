@@ -14,6 +14,13 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+" Default command history is too small
+set history=200
+
+" Tab complete similar to zsh
+set wildmenu
+set wildmode=full
+
 " Disable arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -21,6 +28,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Default number format to base 10
+" Necessary for vim's integer increment/decrement shortcuts
 set nrformats=
 
 """""""""""" Colorscheme """"""""""""""
@@ -70,9 +78,6 @@ nnoremap <C-k> <C-W>k<C-W>_
 nnoremap <C-h> <C-W>h<C-W>_
 nnoremap <C-l> <C-W>l<C-W>_
 
-" Use spacebar to open folds
-nnoremap <space> za
-vnoremap <space> zf
 " Set fold colors
 hi foldcolumn ctermbg=8
 hi folded ctermbg=8
@@ -240,9 +245,14 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Automatically close xml tags, 1 to close HTML tags also
 let g:xmledit_enable_html = 0
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+let g:syntastic_javascript_checkers = ['jshint']
 
 " TODO: Add 'if darwin' condition
 let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
+
+" TODO: Determine if these are necessary
+let g:lisp_rainbow = 1
+let g:mustache_abbreviations = 1
 
 " Don't bring up nerdtree when any file is opened
 let g:nerdtree_tabs_open_on_console_startup = 0
@@ -259,5 +269,3 @@ function! Timestamp()
 endfunction
 
 command! Timestamp call Timestamp()
-
-let g:mustache_abbreviations = 1
