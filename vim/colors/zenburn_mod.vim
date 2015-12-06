@@ -189,7 +189,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let g:colors_name="zenburn"
+let g:colors_name="zenburn_mod"
 
 " check for ctags-highlighting
 if exists("g:loaded_ctags_highlighting") && g:loaded_ctags_highlighting && ! g:zenburn_disable_ctags_highlighting_support

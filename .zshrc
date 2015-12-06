@@ -7,19 +7,11 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cdated"
 
-plugins=(git vi-mode web-search cp brew gitfast mvn wd)
+plugins=(git brew mvn wd)
 
 ## Plugin Descriptions ##
 #
-# web-search: enter a search query from the shell:
-# `google magnets`
-#
-# cp: displays progress when using cpv instead of cp
-# `cpv SRC DEST`
-#
 # brew: add commandline completion for Homebrew on OSX
-#
-# gitfast: supposedly faster completion
 #
 # mvn: add commandline completion for maven
 #
@@ -33,16 +25,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Non-OMZ Configurations
 
-# Set the auto completion on
-autoload -U compinit
-compinit
-
 # Lets set some options
 # setopt correctall
 setopt autocd
 setopt auto_resume
-bindkey -e
-bindkey -M viins 'jk' vi-cmd-mode
 
 ## Enables the extgended globbing features
 setopt extendedglob
@@ -60,9 +46,7 @@ autoload -U colors && colors
 
 # Aliases
 alias grep='grep --color=auto'
-alias watcher='watch -d -n1 ls -aslth'
 alias vi=vim
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
 alias tmux="tmux -2"
 
@@ -70,6 +54,8 @@ alias gofmt="gofmt -w -tabs=false -tabwidth=4"
 alias indent="xmlindent -w"
 
 alias cgrep="LANG=C grep"
+
+alias mongod="mongod --config /usr/local/etc/mongod.conf"
 
 # OS dependent aliases
 if [ "$(uname)" = "Darwin" ]; then
@@ -103,4 +89,10 @@ LC_ALL=
 
 stty -ixon
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
+
+PATH=$PATH:~/.cabal/bin # Add Cabal
+PATH=$PATH:/opt/Sencha/Cmd/6.0.0.202
+
+#export HOMEBREW_BUILD_FROM_SOURCE=0
+export GOPATH=~/Devel/Go
