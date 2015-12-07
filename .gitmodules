@@ -1,3 +1,33 @@
 [submodule "vim/bundle/rainbow_parentheses.vim"]
 	path = vim/bundle/rainbow_parentheses.vim
 	url = https://github.com/cdated/rainbow_parentheses.vim.git
+[submodule "vim/bundle/nerdtree.git"]
+	path = vim/bundle/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/supertab.git"]
+	path = vim/bundle/supertab.git
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/syntastic.git"]
+	path = vim/bundle/syntastic.git
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/tlib_vim.git"]
+	path = vim/bundle/tlib_vim.git
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/bundle/vim-addon-mw-utils.git"]
+	path = vim/bundle/vim-addon-mw-utils.git
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/bundle/vim-autoformat.git"]
+	path = vim/bundle/vim-autoformat.git
+	url = https://github.com/Chiel92/vim-autoformat.git
+[submodule "vim/bundle/vim-go.git"]
+	path = vim/bundle/vim-go.git
+	url = https://github.com/fatih/vim-go.git
+[submodule "vim/bundle/vim-snipmate.git"]
+	path = vim/bundle/vim-snipmate.git
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "vim/bundle/vim-snippets.git"]
+	path = vim/bundle/vim-snippets.git
+	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/bundle/vim-ruby.git"]
+	path = vim/bundle/vim-ruby.git
+	url = https://github.com/vim-ruby/vim-ruby.git
