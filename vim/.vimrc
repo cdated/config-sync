@@ -183,14 +183,14 @@ inoremap jk <esc>
 nnoremap <silent> <cr> :noh<cr><cr>
 
 " Comment out a visually selected region
-vnoremap " :s#^#"#<cr>
-vnoremap -" :s#^"##<cr>
+vnoremap <silent> " :s#^#"#<cr>:noh<cr>
+vnoremap <silent> -" :s#^"##<cr>:noh<cr>
 
-vnoremap # :s#^#\##<cr>
-vnoremap -# :s#^\###<cr>
+vnoremap <silent> # :s#^#\##<cr>:noh<cr>
+vnoremap <silent> -# :s#^\###<cr>:noh<cr>
 
-vnoremap // :s#^#\/\/ #<cr>
-vnoremap -// :s#^\/\/\ ##<cr>
+vnoremap <silent> // :s#^#\/\/ #<cr>:noh<cr>
+vnoremap <silent> -// :s#^\/\/\ ##<cr>:noh<cr>
 
 " Use double slashes for Haskell comment shortcut
 if has("autocmd")
