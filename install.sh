@@ -1,5 +1,18 @@
 #!/bin/sh
 
+# If zsh is installed change default shell to zsh
+ZSH_PATH=/bin/zsh
+if [[ ! -a $ZSH_PATH ]]; then
+    echo "Please install zsh first"
+    exit 1
+fi
+
+if [ -x $ZSH_PATH ] && [ $SHELL != $ZSH_PATH ]; then
+    chsh -s $ZSH_PATH
+fi
+
+echo "Current shell set to zsh"
+
 # Install OMZ if not installed
 OMZ_PATH=~/.oh-my-zsh
 ZSH_THEME=$OMZ_PATH/themes/cdated.zsh-theme
@@ -9,13 +22,6 @@ if [[ ! -d $OMZ_PATH ]]; then
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
     echo "OMZ installed"
 fi
-
-# If zsh is installed change default shell to zsh
-ZSH_PATH=/bin/zsh
-if [ -x $ZSH_PATH ] && [ $SHELL != $ZSH_PATH ]; then
-    chsh -s $ZSH_PATH
-fi
-echo "Current shell set to zsh"
 
 # Replace theme with repo file
 if [[ -a $ZSH_THEME ]]; then
