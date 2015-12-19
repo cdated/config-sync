@@ -254,14 +254,21 @@ let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 let g:lisp_rainbow = 1
 let g:mustache_abbreviations = 1
 
+""" NERDTree Settings """
+
 " Don't bring up nerdtree when any file is opened
 let g:nerdtree_tabs_open_on_console_startup = 0
 " open NERDTree with `Ctrl-n`
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> <plug>NERDTreeTabsToggle<CR>
+" Show dot files
+let NERDTreeShowHidden=1
+" Open new tab for NERDTree
+let NERDTreeMapOpenInTab='<ENTER>'
+let g:nerdtree_tabs_open_on_new_tab=1
 
+" Navigate tabs
 noremap  <C-l> :tabn<CR>
 noremap  <C-h> :tabp<CR>
-noremap  <C-n> :tabnew<CR>
 
 function! Timestamp()
   let date = system("date '+%B %d, %Y %I:%M %p'")[:-2]
