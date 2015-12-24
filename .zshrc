@@ -95,4 +95,5 @@ PATH=$PATH:~/.cabal/bin # Add Cabal
 PATH=$PATH:/opt/Sencha/Cmd/6.0.0.202
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
-export GOPATH=~/Devel/Go
+export GOPATH=~/Dev/Go
+PATH=$PATH:$GOPATH/bin
