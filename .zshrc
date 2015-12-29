@@ -61,6 +61,7 @@ alias mongod="mongod --config /usr/local/etc/mongod.conf"
 if [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'
     alias vim='mvim -v'
+    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 else
     alias ls='ls --color=auto'
 fi
