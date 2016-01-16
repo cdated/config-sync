@@ -47,14 +47,7 @@ autoload -U colors && colors
 # Aliases
 alias grep='grep --color=auto'
 alias vi=vim
-
 alias tmux="tmux -2"
-
-alias gofmt="gofmt -w -tabs=false -tabwidth=4"
-alias indent="xmlindent -w"
-
-alias cgrep="LANG=C grep"
-
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
 
 # OS dependent aliases
@@ -62,6 +55,7 @@ if [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'
     alias vim='mvim -v'
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+    export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv3/3.1.0_1/lib/python3.5/site-packages
 else
     alias ls='ls --color=auto'
 fi
@@ -98,3 +92,5 @@ PATH=$PATH:/opt/Sencha/Cmd/6.0.0.202
 #export HOMEBREW_BUILD_FROM_SOURCE=0
 export GOPATH=~/Dev/Go
 PATH=$PATH:$GOPATH/bin
+
+export MONGOCLIENT='localhost'
