@@ -105,7 +105,7 @@ if has("autocmd")
   " Autoformat the following file types on save
   set autoindent
   au BufWrite *.css,*.html,*.js,*.rb :Autoformat
-  au BufWrite *.py :Autopep8
+  au BufWritePost *.py :Autopep8
   let g:autopep8_disable_show_diff=1
   au BufRead,BufNewFile *.handlebars,*.hbs set ft=html.mustache
 endif
