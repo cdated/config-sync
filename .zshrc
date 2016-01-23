@@ -56,6 +56,7 @@ if [ "$(uname)" = "Darwin" ]; then
     alias vim='mvim -v'
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
     export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv3/3.1.0_1/lib/python3.5/site-packages
+    alias pgsql='/Applications/Postgres.app/Contents/Versions/9.4/bin/psql -p5432'
 else
     alias ls='ls --color=auto'
 fi
