@@ -49,15 +49,17 @@ endif
 set cindent
 set cino=(0,W$,c1,C1,{0
 set shiftwidth=4
-set tabstop=8
 set expandtab
 set smarttab
 set wrap
 
-set showcmd
+" If noet, 2 soft tabs will become a tab char
+set tabstop=8
 
-" Show line numbers
+" Show line numbers, current row/col/%, and entered cmd
 set number
+set ruler
+set showcmd
 
 " Use system clipboard
 set clipboard=unnamed
@@ -86,21 +88,28 @@ hi folded ctermbg=8
 exec "set listchars=tab:\uBB-,trail:\uB7,nbsp:~"
 set list
 
+" Allow language specific plugins and indentation
 filetype plugin on
 filetype indent on
 
 " Language specific style
 if has("autocmd")
+  " Remove trailing whitespace
+  au BufWritePre * :%s/\s\+$//e
+
+  " Disable automatic comment on new lines following comment line
   au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-  au BufEnter *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-  au BufEnter *.c,*.cc,*.cpp,*.fsm,*.h,*.java set tabstop=8
-  au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
-  au FileType css set syntax=scss
-  au FileType css,html,js,html.mustache colorscheme sexy-railscasts-256
-  au BufWritePre *.py normal m`:%s/\s\+$//e ``
+
+  " Enforce formatting before gofmt
   au BufNewFile,BufReadPost *.go set filetype=go
   au FileType go set tabstop=4
   au FileType go set noet
+
+  " Web dev rules
+  au Filetype html,ruby setlocal ts=2 sts=2 sw=2
+  au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
+  au FileType css set syntax=scss
+  au FileType css,html,js,html.mustache,ruby colorscheme sexy-railscasts-256
 
   " Autoformat the following file types on save
   set autoindent
@@ -222,7 +231,6 @@ set hidden
 " Searching with '*' highlights all occurences of a word.
 set hlsearch
 set incsearch
-set ruler
 
 " Open ctags result in another tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
