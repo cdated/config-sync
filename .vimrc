@@ -106,7 +106,7 @@ if has("autocmd")
   au FileType go set noet
 
   " Web dev rules
-  au Filetype html,ruby setlocal ts=2 sts=2 sw=2
+  au Filetype html,ruby,yaml setlocal ts=2 sts=2 sw=2
   au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
   au FileType css set syntax=scss
   au FileType css,html,js,html.mustache,ruby colorscheme sexy-railscasts-256
@@ -173,7 +173,7 @@ nnoremap <leader>p :bp<cr>
 nnoremap <leader>hi :set nonumber foldcolumn=0<cr>
 nnoremap <leader>sh :set number foldcolumn=2
 
-" Toggle spell checking 
+" Toggle spell checking
 nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
 
 " Diff ignore whitespace
