@@ -66,6 +66,17 @@ function bak(){
                 tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
 }
 
+function enc(){
+    openssl enc -aes-256-cbc -a -salt -in ${1} -out ${1}.enc
+    mv ${1}.enc ${1}
+}
+
+function dec(){
+    # Strip .enc and add .dec
+    openssl enc -d -aes-256-cbc -a -in ${1} -out ${1}.dec
+    mv ${1}.dec ${1}
+}
+
 export TZ=:/usr/share/zoneinfo/America/New_York
 LANG=en_US.UTF-8
 LC_CTYPE="en_US.UTF-8"
