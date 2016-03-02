@@ -72,7 +72,6 @@ function enc(){
 }
 
 function dec(){
-    # Strip .enc and add .dec
     openssl enc -d -aes-256-cbc -a -in ${1} -out ${1}.dec
     mv ${1}.dec ${1}
 }
