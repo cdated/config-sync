@@ -73,7 +73,9 @@ function enc(){
 
 function dec(){
     openssl enc -d -aes-256-cbc -a -in ${1} -out ${1}.dec
-    mv ${1}.dec ${1}
+    if [ $? -eq 0 ]; then
+        mv ${1}.dec ${1}
+    fi
 }
 
 export TZ=:/usr/share/zoneinfo/America/New_York
