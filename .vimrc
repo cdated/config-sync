@@ -272,13 +272,11 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 map <C-n> <plug>NERDTreeTabsToggle<CR>
 " Show dot files
 let NERDTreeShowHidden=1
-" Open new tab for NERDTree
-let NERDTreeMapOpenInTab='<ENTER>'
-let g:nerdtree_tabs_open_on_new_tab=1
 
 " Navigate tabs
 noremap  <C-l> :tabn<CR>
 noremap  <C-h> :tabp<CR>
+noremap  <C-a> :tabnew<CR>
 
 function! Timestamp()
   let date = system("date '+%B %d, %Y %I:%M %p'")[:-2]

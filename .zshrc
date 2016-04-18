@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cdated"
 
-plugins=(git brew mvn wd)
+plugins=(git brew wd)
 
 ## Plugin Descriptions ##
 #
@@ -58,6 +58,7 @@ if [ "$(uname)" = "Darwin" ]; then
     export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv3/3.1.0_1/lib/python3.5/site-packages
 else
     alias ls='ls --color=auto'
+    alias vim='gvim -v'
 fi
 
 # Make quick tarballs
@@ -99,10 +100,10 @@ stty -ixon
 LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 
 PATH=$PATH:~/.cabal/bin # Add Cabal
-PATH=$PATH:/opt/Sencha/Cmd/6.0.0.202
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
-export GOPATH=~/Dev/Go
-PATH=$PATH:$GOPATH/bin
-
 export MONGOCLIENT='localhost'
+export GOPATH=~/gocode
+export PATH="$GOPATH/bin:$PATH"
+
+setopt append_history no_inc_append_history no_share_history
