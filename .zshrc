@@ -57,7 +57,8 @@ if [ "$(uname)" = "Darwin" ]; then
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
     export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv3/3.1.0_1/lib/python3.5/site-packages
 else
-    alias vim='gvim -v'
+    # Alias vim to 'gvim -v' only if gvim is installed
+    command -v gvim >/dev/null 2>&1 && alias vim='gvim -v'
 fi
 
 # Make quick tarballs

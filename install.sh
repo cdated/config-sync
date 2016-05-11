@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If zsh is installed change default shell to zsh
-ZSH_PATH=`which zsh`
+ZSH_PATH=`command -v zsh`
 if [ ! $? -eq 0 ] || [ ! -e $ZSH_PATH ]; then
     echo "Please install zsh first"
     exit 1
