@@ -102,7 +102,6 @@ LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 PATH=$PATH:~/.cabal/bin # Add Cabal
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
-export MONGOCLIENT='localhost'
 export GOPATH=~/gocode
 export PATH="$GOPATH/bin:$PATH"
 

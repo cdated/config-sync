@@ -106,15 +106,15 @@ if has("autocmd")
   au FileType go set noet
 
   " Web dev rules
-  au Filetype html,ruby,yaml setlocal ts=2 sts=2 sw=2
+  au Filetype html,htmldjango,ruby,eruby,yaml setlocal ts=2 sts=2 sw=2
   au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
   au FileType css set syntax=scss
-  au FileType css,html,js,html.mustache,ruby colorscheme sexy-railscasts-256
+  au FileType css,html,js,html.mustache,ruby,eruby colorscheme sexy-railscasts-256
 
   " Autoformat the following file types on save
   set autoindent
   au BufWrite *.css,*.html,*.js,*.rb :Autoformat
-  au BufWritePost *.py :Autopep8
+  "au BufWritePost *.py :Autopep8
   let g:autopep8_disable_show_diff=1
   au BufRead,BufNewFile *.handlebars,*.hbs set ft=html.mustache
 endif
@@ -284,3 +284,12 @@ function! Timestamp()
 endfunction
 
 command! Timestamp call Timestamp()
+
+let delimitMate_expand_cr = 1
+
+" Move up and down in autocomplete with <c-j> and <c-k>
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
+" Omnicomplete file path with C-r since my tmux has C-f
+inoremap <C-x><C-r> <C-x><C-f>
