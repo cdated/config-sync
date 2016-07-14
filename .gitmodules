@@ -4,9 +4,6 @@
 [submodule "vim/bundle/nerdtree.git"]
 	path = vim/bundle/nerdtree.git
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/supertab.git"]
-	path = vim/bundle/supertab.git
-	url = https://github.com/ervandew/supertab.git
 [submodule "vim/bundle/syntastic.git"]
 	path = vim/bundle/syntastic.git
 	url = https://github.com/scrooloose/syntastic.git
@@ -40,3 +37,6 @@
 [submodule "vim/bundle/delimitMate"]
 	path = vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "vim/bundle/rust.vim"]
+	path = vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
