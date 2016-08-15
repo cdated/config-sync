@@ -47,6 +47,7 @@ autoload -U colors && colors
 # Aliases
 alias grep='grep --color=auto'
 alias vi=vim
+alias viml="vim -u NONE"
 alias tmux="tmux -2"
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
 
@@ -63,8 +64,12 @@ fi
 
 # Make quick tarballs
 function bak(){
-        DATE=$(date +%Y_%m_%d_%H-%M)
-                tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
+    DATE=$(date +%Y_%m_%d_%H-%M)
+    tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
+}
+
+function baller(){
+    tar -czvf ${1%/}.tar.gz ${1%/}
 }
 
 function enc(){
@@ -111,7 +116,7 @@ LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 PATH=$PATH:~/.cabal/bin # Add Cabal
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
-export GOPATH=~/gocode
-export PATH="$GOPATH/bin:$PATH"
+export GOROOT=~/gocode
+export PATH="$GOROOT/bin:$PATH"
 
 setopt append_history no_inc_append_history no_share_history
