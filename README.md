@@ -3,6 +3,10 @@ config-sync
 
 cdated's dot files, it doesn't get more personal than this.
 
+## Installation
+
+`./install` and everything happens automatically in seconds.
+
 ## Tmux
 
 My custom tmux.conf file lives [here](https://github.com/cdated/config-sync/blob/master/.tmux.conf).
