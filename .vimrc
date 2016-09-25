@@ -301,3 +301,6 @@ autocmd FileType python setlocal completeopt-=preview
 
 " Don't write backup file when editing crontab, avoids whines
 autocmd filetype crontab setlocal nobackup nowritebackup
+
+" Use vim-slime plugin to send buffer contents to tmux pane
+let g:slime_target = "tmux"
