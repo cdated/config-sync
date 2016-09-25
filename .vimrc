@@ -17,6 +17,10 @@ endif
 " Default command history is too small
 set history=200
 
+" Search and completion rules
+set infercase
+set nocompatible
+
 " Tab complete similar to zsh
 set wildmenu
 set wildmode=full
@@ -160,27 +164,45 @@ endif
 let mapleader = ","
 
 " Navigate the buffers
-nnoremap <leader>n :bn<cr>
-nnoremap <leader>p :bp<cr>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
 
 " Hide/Show the line numbers and fold column
-nnoremap <leader>hi :set nonumber foldcolumn=0<cr>
-nnoremap <leader>sh :set number foldcolumn=2
+nnoremap <leader>nu :set number!<CR>
 
 " Toggle spell checking
-nnoremap <leader>sp :set spell! spelllang=en_ca<cr>
+nnoremap <leader>sp :set spell! spelllang=en_ca<CR>
 
 " Diff ignore whitespace
 nnoremap <leader>ws :set diffopt+=iwhite
 
 " Toggle printing whitespace characters
-nnoremap <leader>li :<c-u>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <cr>
+nnoremap <leader>li :<c-u>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " Format JSON
 nnoremap <Leader>js !python -m json.tool<CR>
 
+" Open tagbar for current location
+nnoremap <Leader>f :TagbarOpen<CR>:TagbarShowTag<CR>
+
+" Toggle Tagbar
+nnoremap <Leader>tb :Tagbar<CR>
+
 " Toggle paste mode
-set pastetoggle=<leader>pa
+set pastetoggle=<Leader>p
+
+""" NERDTree Settings """
+
+" Don't bring up nerdtree when any file is opened
+let g:nerdtree_tabs_open_on_console_startup = 0
+
+" open NERDTree with `Ctrl-n`
+nnoremap <Leader>nd :NERDTreeTabsToggle<CR>
+
+" Show dot files
+let NERDTreeShowHidden=1
+
+""" End NERDTree Settings """
 
 " Shortcut to escape
 inoremap jk <esc>
@@ -257,20 +279,6 @@ let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 " TODO: Determine if these are necessary
 let g:lisp_rainbow = 1
 let g:mustache_abbreviations = 1
-
-""" NERDTree Settings """
-
-" Don't bring up nerdtree when any file is opened
-let g:nerdtree_tabs_open_on_console_startup = 0
-" open NERDTree with `Ctrl-n`
-map <C-n> <plug>NERDTreeTabsToggle<CR>
-" Show dot files
-let NERDTreeShowHidden=1
-
-" Navigate tabs
-noremap  <C-l> :tabn<CR>
-noremap  <C-h> :tabp<CR>
-noremap  <C-a> :tabnew<CR>
 
 function! Timestamp()
   let date = system("date '+%B %d, %Y %I:%M %p'")[:-2]

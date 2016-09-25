@@ -46,8 +46,6 @@ do
 done
 echo "rc files linked"
 
-cd vim
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
 echo "Done!"

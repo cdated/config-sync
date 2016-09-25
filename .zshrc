@@ -47,6 +47,7 @@ autoload -U colors && colors
 # Aliases
 alias grep='grep --color=auto'
 alias vi=vim
+alias viml="vim -u NONE"
 alias tmux="tmux -2"
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
 
@@ -63,8 +64,12 @@ fi
 
 # Make quick tarballs
 function bak(){
-        DATE=$(date +%Y_%m_%d_%H-%M)
-                tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
+    DATE=$(date +%Y_%m_%d_%H-%M)
+    tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
+}
+
+function baller(){
+    tar -czvf ${1%/}.tar.gz ${1%/}
 }
 
 # Make source tarballs
