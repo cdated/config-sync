@@ -21,12 +21,6 @@ set history=200
 set wildmenu
 set wildmode=full
 
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
 " Default number format to base 10
 " Necessary for vim's integer increment/decrement shortcuts
 set nrformats=
@@ -113,7 +107,7 @@ if has("autocmd")
 
   " Autoformat the following file types on save
   set autoindent
-  au BufWrite *.css,*.html,*.js,*.rb :Autoformat
+  au BufWrite *.css,*.js,*.rb :Autoformat
   "au BufWritePost *.py :Autopep8
   let g:autopep8_disable_show_diff=1
   au BufRead,BufNewFile *.handlebars,*.hbs set ft=html.mustache
@@ -293,3 +287,9 @@ inoremap <expr> <c-k> ("\<C-p>")
 
 " Omnicomplete file path with C-r since my tmux has C-f
 inoremap <C-x><C-r> <C-x><C-f>
+
+" Disable scratch window popping up
+autocmd FileType python setlocal completeopt-=preview
+
+" Don't write backup file when editing crontab, avoids whines
+autocmd filetype crontab setlocal nobackup nowritebackup

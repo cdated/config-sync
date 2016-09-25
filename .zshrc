@@ -67,6 +67,13 @@ function bak(){
                 tar -czvf ${1%/}.$DATE.tar.gz ${1%/}
 }
 
+# Make source tarballs
+function star(){
+    VERSION=`grep -oh "Version: *.*.*" *.spec | sed 's/Version: //'`
+    PROJECT=`grep -oh "Name: [[:alnum:]]*" *.spec | sed 's/Name: //'`
+    tar -czvf ~/rpmbuild/SOURCES/$PROJECT-$VERSION.tar.gz .
+}
+
 function enc(){
     ENCRYPTED=${1}.enc
     openssl enc -aes-256-cbc -a -salt -in ${1} -out $ENCRYPTED
@@ -111,7 +118,5 @@ LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 PATH=$PATH:~/.cabal/bin # Add Cabal
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
-export GOPATH=~/gocode
-export PATH="$GOPATH/bin:$PATH"
 
 setopt append_history no_inc_append_history no_share_history
