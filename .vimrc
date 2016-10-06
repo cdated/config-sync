@@ -214,8 +214,8 @@ nnoremap <silent> <cr> :noh<cr><cr>
 vnoremap <silent> " :s#^#"#<cr>:noh<cr>
 vnoremap <silent> -" :s#^"##<cr>:noh<cr>
 
-vnoremap <silent> # :s#^#\##<cr>:noh<cr>
-vnoremap <silent> -# :s#^\###<cr>:noh<cr>
+vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+vnoremap <silent> -# :s/^#//<cr>:noh<cr>
 
 vnoremap <silent> // :s#^#\/\/ #<cr>:noh<cr>
 vnoremap <silent> -// :s#^\/\/\ ##<cr>:noh<cr>
@@ -304,3 +304,5 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 " Use vim-slime plugin to send buffer contents to tmux pane
 let g:slime_target = "tmux"
+"let g:slime_dont_ask_default = 1
+let g:slime_python_ipython = 1
