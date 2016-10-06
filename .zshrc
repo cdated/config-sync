@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cdated"
 
-plugins=(git brew wd)
+plugins=(git brew wd sudo vagrant)
 
 ## Plugin Descriptions ##
 #
@@ -50,6 +50,7 @@ alias vi=vim
 alias viml="vim -u NONE"
 alias tmux="tmux -2"
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
+alias paneid="tmux run 'echo #{pane_id}'"
 
 # OS dependent aliases
 if [ "$(uname)" = "Darwin" ]; then
