@@ -180,7 +180,7 @@ nnoremap <leader>ws :set diffopt+=iwhite
 nnoremap <leader>li :<c-u>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " Format JSON
-nnoremap <Leader>js !python -m json.tool<CR>
+nnoremap <Leader>js :%!python -m json.tool<CR>
 
 " Open tagbar for current location
 nnoremap <Leader>f :TagbarOpen<CR>:TagbarShowTag<CR>
