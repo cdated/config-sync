@@ -52,6 +52,10 @@ alias tmux="tmux -2"
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
 alias paneid="tmux run 'echo #{pane_id}'"
 
+# Suffix aliases, open .py and .conf with vim by default
+alias -s py=vim
+alias -s conf=vim
+
 # OS dependent aliases
 if [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'
@@ -112,3 +116,5 @@ PATH=$PATH:~/.cabal/bin # Add Cabal
 #export HOMEBREW_BUILD_FROM_SOURCE=0
 
 setopt append_history no_inc_append_history no_share_history
+
+export CFLAGS='-W -Wall -ansi -pedantic'
