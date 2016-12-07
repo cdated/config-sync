@@ -35,7 +35,7 @@ set $right semicolon
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Shift+Return exec i3-sensible-terminal
+bindsym Mod1+Shift+Return exec gnome-terminal
 
 # kill focused window
 bindsym Mod1+Shift+c kill

@@ -36,6 +36,12 @@ fi
 ln -s ${PWD}/vim ~/.vim
 echo ".vim directory linked"
 
+if [ -d ~/.i3 ]; then
+    rm -rf ~/.i3
+fi
+ln -s ${PWD}/i3 ~/.i3
+echo ".i3 directory linked"
+
 # Create all the symlinks
 for file in .vimrc .tmux.conf .zshrc
 do
