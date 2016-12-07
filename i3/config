@@ -185,5 +185,5 @@ exec i3-config-wizard
 bindsym Mod1+w focus output left
 bindsym Mod1+e focus output right
 
-bindsym Mod1+Shift+s exec /home/brandon/.i3/switch.py
-bindsym Mod1+g exec /home/brandon/.i3/blurlock
+bindsym Mod1+Shift+s exec ~/.i3/switch.py
+bindsym Mod1+g exec ~/.i3/blurlock
