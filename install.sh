@@ -42,6 +42,12 @@ fi
 ln -s ${PWD}/i3 ~/.i3
 echo ".i3 directory linked"
 
+if [ -e ~/.gitconfig ]; then
+    rm ~/.gitconfig
+fi
+ln -s ${PWD}/.gitconfig ~/.gitconfig
+echo ".gitconfig linked"
+
 # Create all the symlinks
 for file in .vimrc .tmux.conf .zshrc
 do
