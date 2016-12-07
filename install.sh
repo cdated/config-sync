@@ -48,6 +48,9 @@ fi
 ln -s ${PWD}/.gitconfig ~/.gitconfig
 echo ".gitconfig linked"
 
+cp ${PWD}/.Xmodmap ~/
+echo "copied xmodmap for caps->ctrl"
+
 # Create all the symlinks
 for file in .vimrc .tmux.conf .zshrc
 do
