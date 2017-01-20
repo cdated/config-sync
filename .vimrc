@@ -118,7 +118,7 @@ if has("autocmd")
 endif
 
 " Set ctags to look for tags file in parent directory
-set tags=TAGS;
+set tags=.tags;
 
 " Disable swap files
 set noswapfile
@@ -179,14 +179,15 @@ nnoremap <leader>ws :set diffopt+=iwhite
 " Toggle printing whitespace characters
 nnoremap <leader>li :<c-u>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
-" Format JSON
-nnoremap <Leader>js :%!python -m json.tool<CR>
+" Format JSON, mark position and return to that position
+nnoremap <leader>js mz:%!python -m json.tool<CR>`z
 
 " Open tagbar for current location
-nnoremap <Leader>f :TagbarOpen<CR>:TagbarShowTag<CR>
+nnoremap <leader>f :TagbarOpen<CR>:TagbarShowTag<CR>
 
 " Toggle Tagbar
-nnoremap <Leader>tb :Tagbar<CR>
+nnoremap <leader>tb :Tagbar<CR>
+let g:tagbar_left=1
 
 " Toggle paste mode
 set pastetoggle=<Leader>p
@@ -304,5 +305,11 @@ autocmd Filetype crontab setlocal nobackup nowritebackup
 
 " Use vim-slime plugin to send buffer contents to tmux pane
 let g:slime_target = "tmux"
-"let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
+
+" Save/load folds
+"autocmd BufWrite * mkview
+"autocmd BufRead * silent loadview
+
+nnoremap <space> za
+vnoremap <space> zf

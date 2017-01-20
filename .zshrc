@@ -55,6 +55,10 @@ alias tmux="tmux -2"
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
 alias paneid="tmux run 'echo #{pane_id}'"
 
+# Suffix aliases, open .py and .conf with vim by default
+alias -s py=vim
+alias -s conf=vim
+
 # OS dependent aliases
 if [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'
@@ -114,20 +118,6 @@ function civilize(){
 }
 
 export TZ=:/usr/share/zoneinfo/America/New_York
-LANG=en_US.UTF-8
-LC_CTYPE="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_PAPER="en_US.UTF-8"
-LC_NAME="en_US.UTF-8"
-LC_ADDRESS="en_US.UTF-8"
-LC_TELEPHONE="en_US.UTF-8"
-LC_MEASUREMENT="en_US.UTF-8"
-LC_IDENTIFICATION="en_US.UTF-8"
-LC_ALL=
 
 stty -ixon
 
@@ -138,3 +128,5 @@ PATH=$PATH:~/.cabal/bin # Add Cabal
 #export HOMEBREW_BUILD_FROM_SOURCE=0
 
 setopt append_history no_inc_append_history no_share_history
+
+export CFLAGS='-W -Wall -ansi -pedantic'
