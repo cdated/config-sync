@@ -130,3 +130,5 @@ PATH=$PATH:~/.cabal/bin # Add Cabal
 setopt append_history no_inc_append_history no_share_history
 
 export CFLAGS='-W -Wall -ansi -pedantic'
+
+alias pretty='python -m json.tool'

@@ -313,3 +313,9 @@ let g:slime_python_ipython = 1
 
 nnoremap <space> za
 vnoremap <space> zf
+
+" Use neocomplete
+let g:neocomplete#enable_at_startup = 1
+
+" Add go imports automatically
+let g:go_fmt_command = "goimports"
