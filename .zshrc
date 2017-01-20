@@ -7,13 +7,16 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cdated"
 
-plugins=(git brew wd sudo vagrant)
+# Don't bother with brew on Linux
+if [ "$(uname)" != "Darwin" ]; then
+    plugins=(git wd sudo vagrant)
+else
+    plugins=(git brew wd sudo vagrant)
+fi
 
 ## Plugin Descriptions ##
 #
 # brew: add commandline completion for Homebrew on OSX
-#
-# mvn: add commandline completion for maven
 #
 # wd: add aliases to 'cd DEST' on the fly
 # `wd add config`
@@ -99,6 +102,15 @@ function dec(){
         OUTFILE=`echo $DECRYPTED | sed 's/.enc.dec$//'`
         mv $DECRYPTED $OUTFILE
     fi
+}
+
+function activate(){
+    source ${1}/bin/activate
+}
+
+function civilize(){
+    # Recursively replace spaces in filenames to underscores
+    find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
 }
 
 export TZ=:/usr/share/zoneinfo/America/New_York
