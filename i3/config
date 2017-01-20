@@ -182,6 +182,12 @@ bar {
 #######################################################################
 exec i3-config-wizard
 
+# Let nitrogen manage background image
+exec --no-startup-id nitrogen --restore
+
+# Start redshift in auto mode
+exec --no-startup-id redshift
+
 bindsym Mod1+w focus output left
 bindsym Mod1+e focus output right
 
