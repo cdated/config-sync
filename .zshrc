@@ -56,7 +56,6 @@ alias mongod="mongod --config /usr/local/etc/mongod.conf"
 alias paneid="tmux run 'echo #{pane_id}'"
 
 # Suffix aliases, open .py and .conf with vim by default
-alias -s py=vim
 alias -s conf=vim
 
 # OS dependent aliases
@@ -83,7 +82,7 @@ function baller(){
 # Make source tarballs
 function star(){
     VERSION=`grep -oh "Version: *.*.*" *.spec | sed 's/Version: //'`
-    PROJECT=`grep -oh "Name: [[:alnum:]]*" *.spec | sed 's/Name: //'`
+    PROJECT=`grep -oh "Name: [[:alnum:]-]*" *.spec | sed 's/Name: //'`
     tar -czvf ~/rpmbuild/SOURCES/$PROJECT-$VERSION.tar.gz .
 }
 
@@ -115,6 +114,10 @@ function activate(){
 function civilize(){
     # Recursively replace spaces in filenames to underscores
     find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
+}
+
+function unrpm() {
+    rpm2cpio ${1} | cpio -idmv
 }
 
 export TZ=:/usr/share/zoneinfo/America/New_York

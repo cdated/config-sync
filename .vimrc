@@ -52,7 +52,7 @@ set smarttab
 set wrap
 
 " If noet, 2 soft tabs will become a tab char
-set tabstop=8
+set tabstop=4
 
 " Show line numbers, current row/col/%, and entered cmd
 set number
@@ -104,16 +104,17 @@ if has("autocmd")
   au FileType go set noet
 
   " Web dev rules
-  au Filetype html,htmldjango,ruby,eruby,yaml setlocal ts=2 sts=2 sw=2
+  au Filetype html,htmldjango,ruby,eruby,yaml,js setlocal ts=2 sts=2 sw=2
   au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
   au FileType css set syntax=scss
   au FileType css,html,js,html.mustache,ruby,eruby colorscheme sexy-railscasts-256
 
   " Autoformat the following file types on save
   set autoindent
-  au BufWrite *.css,*.js,*.rb :Autoformat
-  "au BufWritePost *.py :Autopep8
+  au BufWrite *.css,*.js,*.rb,*.py :Autoformat
   let g:autopep8_disable_show_diff=1
+  " Don't automatically add newline after class (disabled)
+  " let g:autopep8 = 'E305'
   au BufRead,BufNewFile *.handlebars,*.hbs set ft=html.mustache
 endif
 
@@ -216,7 +217,7 @@ vnoremap <silent> " :s#^#"#<cr>:noh<cr>
 vnoremap <silent> -" :s#^"##<cr>:noh<cr>
 
 vnoremap <silent> # :s/^/#/<cr>:noh<cr>
-vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+vnoremap <silent> -# :s/^\s*#//<cr>:noh<cr>
 
 vnoremap <silent> // :s#^#\/\/ #<cr>:noh<cr>
 vnoremap <silent> -// :s#^\/\/\ ##<cr>:noh<cr>
