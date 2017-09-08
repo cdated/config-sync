@@ -111,10 +111,13 @@ if has("autocmd")
 
   " Autoformat the following file types on save
   set autoindent
-  au BufWrite *.css,*.js,*.rb,*.py :Autoformat
-  let g:autopep8_disable_show_diff=1
+  au BufWrite *.css,*.js,*.rb :Autoformat
+
+  " au BufWrite *.py :Autoformat
   " Don't automatically add newline after class (disabled)
   " let g:autopep8 = 'E305'
+  let g:autopep8_disable_show_diff=1
+  let g:autopep8_max_line_length=120
   au BufRead,BufNewFile *.handlebars,*.hbs set ft=html.mustache
 endif
 
@@ -254,7 +257,7 @@ set incsearch
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Highlight the 81st character
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%121v', 100)
 
 " Create a backup copy in tmp when saving over a file
 set backup

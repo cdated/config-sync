@@ -9,9 +9,9 @@ ZSH_THEME="cdated"
 
 # Don't bother with brew on Linux
 if [ "$(uname)" != "Darwin" ]; then
-    plugins=(git wd sudo vagrant)
+    plugins=(git wd vagrant)
 else
-    plugins=(git brew wd sudo vagrant)
+    plugins=(git brew wd vagrant)
 fi
 
 ## Plugin Descriptions ##
@@ -52,7 +52,6 @@ alias grep='grep --color=auto'
 alias vi=vim
 alias viml="vim -u NONE"
 alias tmux="tmux -2"
-alias mongod="mongod --config /usr/local/etc/mongod.conf"
 alias paneid="tmux run 'echo #{pane_id}'"
 
 # Suffix aliases, open .py and .conf with vim by default
@@ -120,6 +119,10 @@ function unrpm() {
     rpm2cpio ${1} | cpio -idmv
 }
 
+function untar() {
+    tar zxvf ${1}
+}
+
 export TZ=:/usr/share/zoneinfo/America/New_York
 
 stty -ixon
@@ -135,3 +138,7 @@ setopt append_history no_inc_append_history no_share_history
 export CFLAGS='-W -Wall -ansi -pedantic'
 
 alias pretty='python -m json.tool'
+
+export PATH="/home/$USER/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
