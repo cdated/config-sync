@@ -138,7 +138,3 @@ setopt append_history no_inc_append_history no_share_history
 export CFLAGS='-W -Wall -ansi -pedantic'
 
 alias pretty='python -m json.tool'
-
-export PATH="/home/$USER/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
