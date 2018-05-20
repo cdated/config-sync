@@ -123,6 +123,10 @@ function untar() {
     tar zxvf ${1}
 }
 
+function docker_clean() {
+    docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+}
+
 export TZ=:/usr/share/zoneinfo/America/New_York
 
 stty -ixon
@@ -135,6 +139,9 @@ PATH=$PATH:~/.cabal/bin # Add Cabal
 
 setopt append_history no_inc_append_history no_share_history
 
-export CFLAGS='-W -Wall -ansi -pedantic'
+export CFLAGS='-W -Wall -ansi -pedantic -std=c11'
 
 alias pretty='python -m json.tool'
+alias fast="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
+alias whatsmyip="curl ipinfo.io"
+alias gitclean="git reset --hard HEAD;git clean -fdx"

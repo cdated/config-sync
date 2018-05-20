@@ -101,13 +101,18 @@ if has("autocmd")
   " Enforce formatting before gofmt
   au BufNewFile,BufReadPost *.go set filetype=go
   au FileType go set tabstop=4
-  au FileType go set noet
+  " Use and hide tab characters in go src
+  au FileType go set noet nolist
 
   " Web dev rules
-  au Filetype html,htmldjango,ruby,eruby,yaml,js setlocal ts=2 sts=2 sw=2
+  au Filetype html,htmldjango,ruby,eruby,yaml,js,rst setlocal ts=2 sts=2 sw=2
   au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
   au FileType css set syntax=scss
   au FileType css,html,js,html.mustache,ruby,eruby colorscheme sexy-railscasts-256
+
+  " Indicate where the line breaks in a default terminal for rst
+  au Filetype rst call matchadd('ColorColumn', '\%78v', 100)
+  au Filetype rst setlocal ts=2 sts=2 sw=2
 
   " Autoformat the following file types on save
   set autoindent
@@ -157,8 +162,6 @@ if has('conceal')
         au Syntax * syn keyword Operator lambda conceal cchar=λ
         au Syntax ruby syn match rubyKeyword "->" conceal cchar=λ
         au Syntax haskell syn match hsKeyword "\\" conceal cchar=λ
-        au Syntax * syn keyword Operator not conceal cchar=¬
-        au Syntax * syn keyword Operator and conceal cchar=&
     endif
     hi! link Conceal Operator
     set conceallevel=2
@@ -225,6 +228,12 @@ vnoremap <silent> -# :s/^\s*#//<cr>:noh<cr>
 vnoremap <silent> // :s#^#\/\/ #<cr>:noh<cr>
 vnoremap <silent> -// :s#^\/\/\ ##<cr>:noh<cr>
 
+vnoremap <silent> % :s#^#\/\/ #<cr>:noh<cr>
+vnoremap <silent> -% :s#^\/\/\ ##<cr>:noh<cr>
+
+vnoremap <silent> % :s/^/%/<cr>:noh<cr>
+vnoremap <silent> -% :s/^\s*%//<cr>:noh<cr>
+
 " Use double slashes for Haskell comment shortcut
 if has("autocmd")
     au Syntax haskell vnoremap // :s#^#-- #<cr>
@@ -264,11 +273,12 @@ set backup
 set backupdir=/tmp
 
 " Disable include checks for C/C++
-"let g:syntastic_c_remove_include_errors = 1
-
 let g:syntastic_c_remove_include_errors = 1
 
 let g:syntastic_javascript_checkers = ['jshint']
+
+" Disable syntax checks on rst
+" let g:syntastic_mode_map = { 'passive_filetypes': ['rst'] }
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
