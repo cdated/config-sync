@@ -1,0 +1,54 @@
+# [Created by task 2.5.1 5/18/2018 08:15:42]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+calendar.holidays=full
+weekstart=Monday
+
+# Files
+data.location=~/.task
+
+# Holidays
+include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/holidays.en-US.rc
+include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/holidays.en-US.rc
+include ~/.birthdays.rc
+
+# Color theme (uncomment one to use)
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-16.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-16.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-red-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-green-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-blue-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-violets-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-gray-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/dark-gray-blue-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-dark-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
+#include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
+
+include ~/Github/config-sync/taskwarrior-cdated.theme
+
+uda.priority.values=H,M,,L
+
+urgency.uda.priority.L.coefficient=-3.0
+alias.sas=ready +sas
+alias.sealab=ready +sealab
+alias.omscs=ready +omscs
+alias.reading=ready +reading
+alias.reward=list +reward
+
+report.tree.description=Tree tasks
+report.tree.sort=depends+
+report.tree.columns=id,depends,description
+report.tree.filter=status:pending

@@ -52,7 +52,7 @@ cp ${PWD}/.Xmodmap ~/
 echo "copied xmodmap for caps->ctrl"
 
 # Create all the symlinks
-for file in .vimrc .tmux.conf .zshrc
+for file in .vimrc .tmux.conf .zshrc .taskrc
 do
     if [ -h ~/${file} ] || [ -e ~/${file} ]; then
         rm ~/$file

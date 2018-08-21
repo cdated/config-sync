@@ -335,3 +335,6 @@ let g:neocomplete#enable_auto_close_preview = 1
 " Add go imports automatically
 let g:go_fmt_command = "goimports"
 let g:syntastic_python_checkers = ['mypy', 'flake8']
+
+let g:latex_to_unicode_file_types = "rst"
+let g:latex_to_unicode_auto = 1
