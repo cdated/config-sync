@@ -42,11 +42,10 @@ fi
 ln -s ${PWD}/i3 ~/.i3
 echo ".i3 directory linked"
 
-if [ -e ~/.gitconfig ]; then
-    rm ~/.gitconfig
+if [ ! -f ~/.gitconfig ]; then
+    cp ${PWD}/.gitconfig ~/.gitconfig
+    echo ".gitconfig linked"
 fi
-ln -s ${PWD}/.gitconfig ~/.gitconfig
-echo ".gitconfig linked"
 
 cp ${PWD}/.Xmodmap ~/
 echo "copied xmodmap for caps->ctrl"
