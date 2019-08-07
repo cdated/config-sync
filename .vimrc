@@ -58,6 +58,7 @@ set tabstop=4
 set number
 set ruler
 set showcmd
+set showmode
 
 " Use system clipboard
 set clipboard=unnamed
