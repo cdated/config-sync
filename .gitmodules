@@ -73,3 +73,6 @@
 [submodule "vim/bundle/julia-vim"]
 	path = vim/bundle/julia-vim
 	url = git://github.com/JuliaEditorSupport/julia-vim.git
+[submodule "vim/bundle/black"]
+	path = vim/bundle/black
+	url = https://github.com/ambv/black.git
