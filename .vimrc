@@ -4,6 +4,48 @@ if has("syntax")
   syntax on
 endif
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
+
+" Syntax extensions
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'othree/html5.vim'
+Plug 'larsbs/vim-xmll'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'JulesWang/css.vim'
+Plug 'genoma/vim-less'
+Plug 'mustache/vim-mustache-handlebars'
+
+" Status Bar
+Plug 'vim-airline/vim-airline'
+" Color match parens
+Plug 'cdated/rainbow_parentheses.vim'
+
+Plug 'vim-syntastic/syntastic'
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'Chiel92/vim-autoformat'
+Plug 'fatih/vim-go'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tell-k/vim-autopep8'
+Plug 'Raimondi/delimitMate'
+Plug 'rust-lang/rust.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'jpalardy/vim-slime'
+Plug 'pearofducks/ansible-vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'psf/black'
+" Initialize plugin system
+call plug#end()
+
 " Have Vim jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -19,7 +61,6 @@ set history=200
 
 " Search and completion rules
 set infercase
-set nocompatible
 
 " Tab complete similar to zsh
 set wildmenu
@@ -35,6 +76,7 @@ set t_Co=256
 
 " Set default colorscheme
 colorscheme zenburn_mod
+"colorscheme default
 let g:zenburn_high_Contrast=1
 
 " Explicitly use tell vim to use the same scheme in vimdiff
@@ -93,6 +135,8 @@ filetype indent on
 
 " Language specific style
 if has("autocmd")
+  au FileType python set ts=4 sts=4 sw=4
+
   " Remove trailing whitespace
   au BufWritePre * :%s/\s\+$//e
 
@@ -102,6 +146,7 @@ if has("autocmd")
   " Enforce formatting before gofmt
   au BufNewFile,BufReadPost *.go set filetype=go
   au FileType go set tabstop=4
+
   " Use and hide tab characters in go src
   au FileType go set noet nolist
 
@@ -136,9 +181,6 @@ set tags=.tags;
 
 " Disable swap files
 set noswapfile
-
-" Use vim-pathogen, needed for syntastic
-call pathogen#infect()
 
 " Automatically bring up the location list of issues
 let g:syntastic_auto_loc_list = 0
@@ -344,3 +386,5 @@ let g:syntastic_python_checkers = ['mypy', 'flake8']
 let g:latex_to_unicode_file_types = "rst"
 let g:latex_to_unicode_auto = 1
 let g:go_version_warning = 0
+
+let g:rustfmt_autosave = 1
