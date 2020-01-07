@@ -16,11 +16,6 @@ weekstart=Monday
 # Files
 data.location=~/.task
 
-# Holidays
-include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/holidays.en-US.rc
-include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/holidays.en-US.rc
-include ~/.birthdays.rc
-
 # Color theme (uncomment one to use)
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-16.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/light-256.theme
@@ -37,16 +32,12 @@ include ~/.birthdays.rc
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
-include ~/Github/config-sync/taskwarrior-cdated.theme
+include ~/github/config-sync/taskwarrior/taskwarrior-cdated.theme
 
 uda.priority.values=H,M,,L
 
 urgency.uda.priority.L.coefficient=-3.0
 alias.sas=ready +sas
-alias.sealab=ready +sealab
-alias.omscs=ready +omscs
-alias.reading=ready +reading
-alias.reward=list +reward
 
 report.tree.description=Tree tasks
 report.tree.sort=depends+

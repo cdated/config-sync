@@ -9,10 +9,12 @@ ZSH_THEME="cdated"
 
 # Don't bother with brew on Linux
 if [ "$(uname)" != "Darwin" ]; then
-    plugins=(git wd vagrant)
+    plugins=(git wd vagrant zsh-completions)
 else
-    plugins=(git brew wd vagrant)
+    plugins=(git brew wd vagrant zsh-completions)
 fi
+
+fpath+=~/.zfunc
 
 ## Plugin Descriptions ##
 #
@@ -44,6 +46,12 @@ HISTFILE=~/.zsh-histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# End of lines added by compinstall
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/brandon/.zshrc'
+
+autoload -Uz compinit
+compinit
 # End of lines added by compinstall
 autoload -U colors && colors
 
@@ -124,10 +132,15 @@ function untar() {
 }
 
 function docker_clean() {
-    docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+    docker rmi --force $(docker images --filter "dangling=true" -q --no-trunc)
+}
+
+function yaml2json() {
+    python -c 'import json, sys, yaml ; y=yaml.safe_load(sys.stdin.read()) ; json.dump(y, sys.stdout)'
 }
 
 export TZ=:/usr/share/zoneinfo/America/New_York
+export IP_ADDRESS=`python -c "import socket;s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM);s.connect(('8.8.8.8', 80));print(s.getsockname()[0]);s.close()"`
 
 stty -ixon
 
@@ -137,11 +150,13 @@ PATH=$PATH:~/.cabal/bin # Add Cabal
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
 
-setopt append_history no_inc_append_history no_share_history
+setopt inc_append_history no_share_history
 
-export CFLAGS='-W -Wall -ansi -pedantic -std=c11'
+#export CFLAGS='-W -Wall -ansi -pedantic -std=c11'
 
 alias pretty='python -m json.tool'
 alias fast="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias whatsmyip="curl ipinfo.io"
 alias gitclean="git reset --hard HEAD;git clean -fdx"
+
+export SAVEHIST=100000000

@@ -3,3 +3,11 @@
 	name = Brandon T. Fields
 	username = cdated
 
+[diff]
+	tool = vimdiff
+
+[merge]
+	tool = vimdiff
+
+[core]
+	editor = vim

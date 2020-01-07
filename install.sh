@@ -20,6 +20,7 @@ ZSH_THEME=$OMZ_PATH/themes/cdated.zsh-theme
 # Install OMZ if not found
 if [ ! -d $OMZ_PATH ]; then
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
     echo "OMZ installed"
 fi
 
@@ -51,7 +52,7 @@ cp ${PWD}/.Xmodmap ~/
 echo "copied xmodmap for caps->ctrl"
 
 # Create all the symlinks
-for file in .vimrc .tmux.conf .zshrc .taskrc
+for file in .bashrc .vimrc .tmux.conf .zshrc .taskrc
 do
     if [ -h ~/${file} ] || [ -e ~/${file} ]; then
         rm ~/$file

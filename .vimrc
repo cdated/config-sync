@@ -43,6 +43,8 @@ Plug 'pearofducks/ansible-vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'psf/black'
+Plug 'chr4/nginx.vim'
+Plug 'lepture/vim-jinja'
 " Initialize plugin system
 call plug#end()
 
@@ -154,7 +156,7 @@ if has("autocmd")
   au Filetype html,htmldjango,ruby,eruby,yaml,js,rst setlocal ts=2 sts=2 sw=2
   au FileType css,html,js set indentkeys=0{,0},0#,!^F,o,O,e
   au FileType css set syntax=scss
-  au FileType css,html,js,html.mustache,ruby,eruby colorscheme sexy-railscasts-256
+  au FileType css,html,jinja,ruby,eruby colorscheme sexy-railscasts-256
 
   " Notes and docs
   au Filetype rst setlocal ts=2 sts=2 sw=2
