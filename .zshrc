@@ -43,8 +43,14 @@ zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 HISTFILE=~/.zsh-histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000000
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_expire_dups_first
+setopt inc_append_history
+setopt no_share_history
+
 
 # End of lines added by compinstall
 # The following lines were added by compinstall
@@ -149,14 +155,9 @@ LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 PATH=$PATH:~/.cabal/bin # Add Cabal
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
-
-setopt inc_append_history no_share_history
-
 #export CFLAGS='-W -Wall -ansi -pedantic -std=c11'
 
 alias pretty='python -m json.tool'
 alias fast="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias whatsmyip="curl ipinfo.io"
 alias gitclean="git reset --hard HEAD;git clean -fdx"
-
-export SAVEHIST=100000000
