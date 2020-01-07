@@ -45,7 +45,7 @@ at_strikeoff=%{$'\e[29m'%}
 
 PROMPT='
 ${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~${fg_white}]${at_normal}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}$(git_prompt_ahead)%{$reset_color%}
-[${fg_green}%T${fg_white}]: ${at_normal}'
+${fg_white}[${fg_green}%T${fg_white}]: ${at_normal}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="${fg_purple}  ♨  ${fg_brown}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
