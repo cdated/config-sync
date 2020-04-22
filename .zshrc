@@ -9,7 +9,7 @@ ZSH_THEME="cdated"
 
 # Don't bother with brew on Linux
 if [ "$(uname)" != "Darwin" ]; then
-    plugins=(git wd vagrant zsh-completions)
+    plugins=(git wd vagrant)
 else
     plugins=(git brew wd vagrant zsh-completions)
 fi
