@@ -32,8 +32,6 @@ data.location=~/.task
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
-include ~/github/config-sync/taskwarrior/taskwarrior-cdated.theme
-
 uda.priority.values=H,M,,L
 
 urgency.uda.priority.L.coefficient=-3.0
@@ -43,3 +41,18 @@ report.tree.description=Tree tasks
 report.tree.sort=depends+
 report.tree.columns=id,depends,description
 report.tree.filter=status:pending
+taskd.credentials=sealab\/cdated\/5027591e-f209-4ce5-ac58-0ea844db929d
+
+uda.interval.type=numeric
+uda.interval.label=interval
+uda.estimate.type=numeric
+uda.estimate.label=estimate
+uda.comment.type=string
+uda.commenet.label=comment
+uda.logged.type=numeric
+uda.logged.label=logged
+taskd.server=shino:53589
+taskd.ca=~/.task/ca.cert.pem
+taskd.certificate=~/.task/cdated.cert.pem
+taskd.key=~/.task/cdated.key.pem
+news.version=2.6.0
