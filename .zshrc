@@ -151,6 +151,7 @@ stty -ixon
 LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 
 PATH=$PATH:~/.cabal/bin # Add Cabal
+PATH=$PATH:~/.local/bin # Add local bin
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
 #export CFLAGS='-W -Wall -ansi -pedantic -std=c11'
