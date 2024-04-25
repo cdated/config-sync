@@ -8,4 +8,5 @@ opt.relativenumber = false -- Relative line numbers
 opt.mouse = ""
 vim.opt.statuscolumn = ""
 vim.opt.signcolumn = "number"
+vim.opt.swapfile = false
 vim.cmd([[hi SignColumn guibg=#151515]])
