@@ -37,10 +37,10 @@ fi
 ln -s ${PWD}/vim ~/.vim
 echo ".vim directory linked"
 
-if [ -d ~/.config/nvim/lua ]; then
-	rm -rf ~/.config/nvim/lua
+if [ -d ~/.config/nvim ]; then
+	rm -rf ~/.config/nvim
 fi
-ln -s ${PWD}/nvim/lua ~/.config/nvim/lua
+ln -s ${PWD}/nvim ~/.config/nvim
 echo ".nvim directory linked"
 
 if [ -d ~/.i3 ]; then
@@ -67,5 +67,12 @@ done
 echo "rc files linked"
 
 git submodule update --init --recursive
+
+git config --global user.name "Brandon T. Fields"
+git config user.email "brandon@cdated.com"
+git config --global core.editor "nvim"
+git config --global diff.tool nvimdiff
+git config --global merge.tool nvimdiff
+git config --global --add difftool.prompt false
 
 echo "Done!"

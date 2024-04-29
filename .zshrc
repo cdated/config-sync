@@ -63,6 +63,8 @@ autoload -U colors && colors
 
 # Aliases
 alias grep='grep --color=auto'
+alias vim="nvim"
+alias vimdiff='nvim -d'
 alias viml="vim -u NONE"
 alias tmux="tmux -2"
 alias paneid="tmux run 'echo #{pane_id}'"
