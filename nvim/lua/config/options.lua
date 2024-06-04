@@ -10,3 +10,5 @@ vim.opt.statuscolumn = ""
 vim.opt.signcolumn = "number"
 vim.opt.swapfile = false
 vim.cmd([[hi SignColumn guibg=#151515]])
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
