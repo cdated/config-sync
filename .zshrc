@@ -162,3 +162,5 @@ alias pretty='python -m json.tool'
 alias fast="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias whatsmyip="curl ipinfo.io"
 alias gitclean="git reset --hard HEAD;git clean -fdx"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

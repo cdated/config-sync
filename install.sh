@@ -66,6 +66,11 @@ for file in .bashrc .vimrc .tmux.conf .zshrc .taskrc; do
 done
 echo "rc files linked"
 
+# Install fzf for fuzzy text search
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
+echo "fzf installed"
+
 git submodule update --init --recursive
 
 git config --global user.name "Brandon T. Fields"

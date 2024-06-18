@@ -57,3 +57,5 @@ function parse_git_dirty {
 }
 
 export PS1="\e[92m\]\u@\h\e[m\][\e[34m\]\w\e[m\]] \`parse_git_branch\`\n[\e[32m\]\A\e[m\]]: "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
