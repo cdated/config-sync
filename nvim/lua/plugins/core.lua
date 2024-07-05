@@ -229,6 +229,19 @@ return {
 
   { "garymjr/nvim-snippets", enabled = false },
 
+  { "rafamadriz/friendly-snippets" },
+
+  { 'saadparwaiz1/cmp_luasnip' },
+
+  {
+	"L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+	-- follow latest release.
+	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!).
+	build = "make install_jsregexp"
+  },
+
   -- then: setup supertab in cmp
   {
     "hrsh7th/nvim-cmp",
