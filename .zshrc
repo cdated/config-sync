@@ -121,6 +121,10 @@ function activate(){
     source ${1}/bin/activate
 }
 
+function assemble() {
+    as ${1}.s -o ${1}.o; ld ${1}.o -o ${1}
+}
+
 function civilize(){
     # Recursively replace spaces in filenames to underscores
     find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;

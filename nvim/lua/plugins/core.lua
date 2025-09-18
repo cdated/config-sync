@@ -114,6 +114,7 @@ return {
             ---@type lspconfig.options
             servers = {
                 -- tsserver will be automatically installed with mason and loaded with lspconfig
+                erlangls = {},
                 tsserver = {},
                 pyright = {},
                 clangd = {
@@ -266,8 +267,6 @@ return {
     { "garymjr/nvim-snippets", enabled = false },
 
     { "rafamadriz/friendly-snippets" },
-
-    { "saadparwaiz1/cmp_luasnip" },
 
     {
         "L3MON4D3/LuaSnip",
