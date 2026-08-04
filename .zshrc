@@ -164,3 +164,7 @@ alias whatsmyip="curl ipinfo.io"
 alias gitclean="git reset --hard HEAD;git clean -fdx"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# yarn global binaries (libdragon CLI, etc.)
+export PATH="$HOME/.yarn/bin:$PATH"
+export CLAUDE_CODE_DISABLE_MOUSE=1

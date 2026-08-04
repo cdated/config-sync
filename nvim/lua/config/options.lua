@@ -4,14 +4,22 @@
 
 local opt = vim.opt
 
-opt.relativenumber = false -- Relative line numbers
+opt.relativenumber = false
 opt.mouse = ""
-vim.opt.statuscolumn = ""
-vim.opt.signcolumn = "number"
-vim.opt.swapfile = false
-vim.cmd([[hi SignColumn guibg=#151515]])
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.textwidth = 120
-vim.opt.clipboard = "unnamedplus"
+opt.statuscolumn = ""
+opt.signcolumn = "number"
+opt.swapfile = false
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.textwidth = 120
+opt.clipboard = "unnamedplus"
+
+-- Keep the sign column matching the gruvbox hard background. This has to run on
+-- ColorScheme: setting it here directly is undone as soon as a scheme loads.
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("user_signcolumn", { clear = true }),
+  callback = function()
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "#060606" })
+  end,
+})
