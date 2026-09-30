@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+EDITOR=vim
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -154,6 +156,7 @@ LIBRARY_PATH=/opt/X11/lib:$LIBRARY_PATH
 
 PATH=$PATH:~/.cabal/bin # Add Cabal
 PATH=$PATH:~/.local/bin # Add local bin
+PATH=$PATH:~/.cargo/bin # Add Rust's Cargo
 
 #export HOMEBREW_BUILD_FROM_SOURCE=0
 #export CFLAGS='-W -Wall -ansi -pedantic -std=c11'
